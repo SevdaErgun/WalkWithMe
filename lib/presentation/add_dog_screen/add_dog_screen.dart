@@ -1,3 +1,4 @@
+import '../../widgets/custom_text_form_field.dart';
 import 'controller/add_dog_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
@@ -27,17 +28,16 @@ class AddDogScreen extends GetWidget<AddDogController> {
             AppbarSubtitle2(
               text: "lbl_confirm".tr,
               margin: getMargin(
-                left: 45,
-                top: 40,
-                right: 30,
+                top: 35,
+                right: 15,
               ),
             ),
             AppbarSubtitle1(
               text: "lbl_cancel".tr,
               margin: getMargin(
-                left: 37,
-                top: 40,
-                right: 75,
+                left: 10,
+                top: 35,
+                right: 30,
               ),
             ),
           ],
@@ -46,14 +46,11 @@ class AddDogScreen extends GetWidget<AddDogController> {
         body: SizedBox(
           width: size.width,
           child: SingleChildScrollView(
-            padding: getPadding(
-              top: 146,
-            ),
             child: Container(
               margin: getMargin(
-                left: 88,
-                right: 75,
-                bottom: 5,
+                top: 85,
+                left: MediaQuery.sizeOf(context).width * 1 / 10,
+                right: MediaQuery.sizeOf(context).width * 1 / 10,
               ),
               decoration: AppDecoration.outlineBlack9003f.copyWith(
                 borderRadius: BorderRadiusStyle.roundedBorder60,
@@ -63,12 +60,7 @@ class AddDogScreen extends GetWidget<AddDogController> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    height: getVerticalSize(
-                      261,
-                    ),
-                    width: getHorizontalSize(
-                      603,
-                    ),
+                    width: MediaQuery.sizeOf(context).width * 8 / 10,
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
@@ -76,15 +68,12 @@ class AddDogScreen extends GetWidget<AddDogController> {
                           alignment: Alignment.topCenter,
                           child: Container(
                             height: getVerticalSize(
-                              158,
-                            ),
-                            width: getHorizontalSize(
-                              603,
+                              125,
                             ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
                                 getHorizontalSize(
-                                  60,
+                                  25,
                                 ),
                               ),
                               gradient: LinearGradient(
@@ -122,13 +111,10 @@ class AddDogScreen extends GetWidget<AddDogController> {
                             ),
                             child: Container(
                               height: getSize(
-                                235,
+                                130,
                               ),
                               width: getSize(
-                                235,
-                              ),
-                              padding: getPadding(
-                                all: 54,
+                                130,
                               ),
                               decoration:
                                   AppDecoration.outlineBlack900.copyWith(
@@ -140,10 +126,10 @@ class AddDogScreen extends GetWidget<AddDogController> {
                                   CustomImageView(
                                     imagePath: ImageConstant.imgDog1,
                                     height: getSize(
-                                      126,
+                                      60,
                                     ),
                                     width: getSize(
-                                      126,
+                                      60,
                                     ),
                                     alignment: Alignment.center,
                                   ),
@@ -155,75 +141,26 @@ class AddDogScreen extends GetWidget<AddDogController> {
                       ],
                     ),
                   ),
-                  Container(
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    margin: getMargin(
-                      top: 62,
-                    ),
-                    padding: getPadding(
-                      left: 15,
-                      top: 8,
-                      right: 15,
-                      bottom: 8,
-                    ),
-                    decoration: AppDecoration.txtOutlineBluegray700.copyWith(
-                      borderRadius: BorderRadiusStyle.txtRoundedBorder13,
-                    ),
-                    child: Text(
-                      "lbl_dog_name".tr,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.left,
-                      style: AppStyle.txtRobotoRomanRegular24,
-                    ),
+                  CustomTextFormField(
+                    focusNode: FocusNode(),
+                    autofocus: false,
+                    // controller: controller.surnameController,
+                    hintText: "lbl_dog_name".tr,
+                    margin: getMargin(left: 30, top: 60, right: 30),
                   ),
-                  Container(
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    margin: getMargin(
-                      top: 33,
-                    ),
-                    padding: getPadding(
-                      left: 15,
-                      top: 12,
-                      right: 15,
-                      bottom: 12,
-                    ),
-                    decoration: AppDecoration.txtOutlineBluegray700.copyWith(
-                      borderRadius: BorderRadiusStyle.txtRoundedBorder13,
-                    ),
-                    child: Text(
-                      "lbl_dog_gender".tr,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.left,
-                      style: AppStyle.txtRobotoRomanRegular24,
-                    ),
+                  CustomTextFormField(
+                    focusNode: FocusNode(),
+                    autofocus: false,
+                    // controller: controller.surnameController,
+                    hintText: "lbl_dog_gender".tr,
+                    margin: getMargin(left: 30, top: 33, right: 30),
                   ),
-                  Container(
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    margin: getMargin(
-                      top: 33,
-                      bottom: 91,
-                    ),
-                    padding: getPadding(
-                      left: 15,
-                      top: 8,
-                      right: 15,
-                      bottom: 8,
-                    ),
-                    decoration: AppDecoration.txtOutlineBluegray700.copyWith(
-                      borderRadius: BorderRadiusStyle.txtRoundedBorder13,
-                    ),
-                    child: Text(
-                      "lbl_dog_breed".tr,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.left,
-                      style: AppStyle.txtRobotoRomanRegular24,
-                    ),
+                  CustomTextFormField(
+                    focusNode: FocusNode(),
+                    autofocus: false,
+                    // controller: controller.surnameController,
+                    hintText: "lbl_dog_breed".tr,
+                    margin: getMargin(left: 30, top: 33, right: 30, bottom: 30),
                   ),
                 ],
               ),

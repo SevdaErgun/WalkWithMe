@@ -393,7 +393,8 @@ class ProfileScreen extends GetWidget<ProfileController> {
         ),
         bottomNavigationBar: CustomBottomBar(
           onChanged: (BottomBarEnum type) {
-            Get.toNamed(getCurrentRoute(type), id: 1);
+            print(type);
+            Get.toNamed(getCurrentRoute(type));
           },
         ),
       ),
@@ -404,7 +405,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Home11:
-        return AppRoutes.homeOnePage;
+        return AppRoutes.homeScreen;
       case BottomBarEnum.Plus51:
         return "/";
       case BottomBarEnum.User81:
