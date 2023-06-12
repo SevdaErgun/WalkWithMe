@@ -1,3 +1,5 @@
+import 'package:flutter/gestures.dart';
+
 import 'controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
@@ -220,12 +222,26 @@ class LoginScreen extends GetWidget<LoginController> {
                           ),
                         ),
                         Container(
-                          child: Text(
-                            "msg_don_t_you_have_an".tr,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style: AppStyle.txtRobotoRomanRegular24.copyWith(
-                              decoration: TextDecoration.underline,
+                          // child: Text(
+                          //   "msg_don_t_you_have_an".tr,
+                          //   overflow: TextOverflow.ellipsis,
+                          //   textAlign: TextAlign.left,
+                          //   style: AppStyle.txtRobotoRomanRegular24.copyWith(
+                          //     decoration: TextDecoration.underline,
+                          //   ),
+                          // ),
+                          child: RichText(
+                            text: TextSpan(
+                              style: AppStyle.txtRobotoRomanRegular24.copyWith(
+                                   decoration: TextDecoration.underline,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: "msg_don_t_you_have_an".tr,
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () => Get.toNamed(AppRoutes.registerScreen)
+                                ),
+                              ],
                             ),
                           ),
                         ),
