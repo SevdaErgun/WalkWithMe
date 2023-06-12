@@ -62,7 +62,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                       children: [
                                         CustomTextFormField(
                                           focusNode: FocusNode(),
-                                          autofocus: true,
+                                          autofocus: false,
                                           controller:
                                               controller.emailController,
                                           hintText: "lbl_email".tr,
@@ -81,7 +81,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                         ),
                                         CustomTextFormField(
                                           focusNode: FocusNode(),
-                                          autofocus: true,
+                                          autofocus: false,
                                           controller:
                                               controller.passwordController,
                                           hintText: "lbl_password".tr,

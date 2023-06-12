@@ -36,7 +36,7 @@ class RegisterScreen extends GetWidget<RegisterController> {
                           ),
                           CustomTextFormField(
                             focusNode: FocusNode(),
-                            autofocus: true,
+                            autofocus: false,
                             controller: controller.nameController,
                             hintText: "lbl_name".tr,
                             margin: getMargin(
@@ -52,7 +52,7 @@ class RegisterScreen extends GetWidget<RegisterController> {
                           ),
                           CustomTextFormField(
                             focusNode: FocusNode(),
-                            autofocus: true,
+                            autofocus: false,
                             controller: controller.surnameController,
                             hintText: "lbl_surname".tr,
                             margin: getMargin(
@@ -69,7 +69,7 @@ class RegisterScreen extends GetWidget<RegisterController> {
                           ),
                           CustomTextFormField(
                             focusNode: FocusNode(),
-                            autofocus: true,
+                            autofocus: false,
                             controller: controller.emailController,
                             hintText: "lbl_email".tr,
                             margin: getMargin(
@@ -88,7 +88,7 @@ class RegisterScreen extends GetWidget<RegisterController> {
                           ),
                           CustomTextFormField(
                             focusNode: FocusNode(),
-                            autofocus: true,
+                            autofocus: false,
                             controller: controller.passwordController,
                             hintText: "lbl_password".tr,
                             margin: getMargin(
