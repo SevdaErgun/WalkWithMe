@@ -53,12 +53,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     switch (styleType) {
       case Style.bgShadowBlack9003f:
         return Container(
-          height: getVerticalSize(
-            95,
-          ),
-          width: getHorizontalSize(
-            766,
-          ),
+          height: 80,
+          width: double.infinity,
           decoration: BoxDecoration(
             color: ColorConstant.gray200,
             boxShadow: [
@@ -72,7 +68,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 offset: Offset(
                   0,
-                  10,
+                  2,
                 ),
               ),
             ],

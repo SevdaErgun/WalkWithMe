@@ -14,22 +14,19 @@ class ProfileScreen extends GetWidget<ProfileController> {
       child: Scaffold(
         backgroundColor: ColorConstant.gray200,
         appBar: CustomAppBar(
-          height: getVerticalSize(
-            95,
-          ),
+          height: 70,
           title: AppbarTitle(
             text: "lbl_walkwithme2".tr,
             margin: getMargin(
-              left: 40,
+              left: 30,
             ),
           ),
           actions: [
-            Padding(
+            Container(
+              alignment: Alignment.center,
               padding: getPadding(
-                left: 66,
-                top: 33,
-                right: 66,
-                bottom: 32,
+                left: 25,
+                right: 25,
               ),
               child: Text(
                 "lbl_update_info".tr,
@@ -42,23 +39,14 @@ class ProfileScreen extends GetWidget<ProfileController> {
           styleType: Style.bgShadowBlack9003f,
         ),
         body: SizedBox(
-          width: size.width,
+          width: double.infinity,
           child: SingleChildScrollView(
-            padding: getPadding(
-              top: 56,
-            ),
             child: Container(
               height: getVerticalSize(
-                973,
+                580,
               ),
-              width: getHorizontalSize(
-                669,
-              ),
-              margin: getMargin(
-                left: 40,
-                right: 57,
-                bottom: 5,
-              ),
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: [
@@ -67,9 +55,9 @@ class ProfileScreen extends GetWidget<ProfileController> {
                     child: Container(
                       padding: getPadding(
                         left: 38,
-                        top: 138,
+                        top: 80,
                         right: 38,
-                        bottom: 138,
+                        bottom: 38,
                       ),
                       decoration: AppDecoration.outlineBlack9003f.copyWith(
                         borderRadius: BorderRadiusStyle.roundedBorder60,
@@ -81,10 +69,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                         children: [
                           Align(
                             alignment: Alignment.center,
-                            child: Padding(
-                              padding: getPadding(
-                                top: 16,
-                              ),
+                            child: Container(
                               child: Text(
                                 "lbl_name_surname".tr,
                                 overflow: TextOverflow.ellipsis,
@@ -118,7 +103,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                           ),
                           Padding(
                             padding: getPadding(
-                              top: 95,
+                              top: 40,
                             ),
                             child: Row(
                               children: [
@@ -169,7 +154,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                           ),
                           Padding(
                             padding: getPadding(
-                              top: 16,
+                              top: 0,
                             ),
                             child: Row(
                               children: [
@@ -224,7 +209,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                           ),
                           Padding(
                             padding: getPadding(
-                              top: 10,
+                              top: 0,
                             ),
                             child: Row(
                               children: [
@@ -266,7 +251,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                             alignment: Alignment.centerRight,
                             child: Padding(
                               padding: getPadding(
-                                top: 21,
+                                top: 14,
                                 right: 12,
                               ),
                               child: Text(
@@ -279,7 +264,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                           ),
                           Padding(
                             padding: getPadding(
-                              top: 2,
+                              top: 0,
                             ),
                             child: Row(
                               children: [
@@ -321,7 +306,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                             alignment: Alignment.centerRight,
                             child: Padding(
                               padding: getPadding(
-                                top: 3,
+                                top: 14,
                                 right: 12,
                               ),
                               child: Text(
@@ -334,7 +319,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                           ),
                           Padding(
                             padding: getPadding(
-                              top: 27,
+                              top: 0,
                             ),
                             child: Row(
                               children: [
@@ -376,7 +361,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                             alignment: Alignment.centerRight,
                             child: Padding(
                               padding: getPadding(
-                                top: 10,
+                                top: 14,
                                 right: 12,
                               ),
                               child: Text(
@@ -393,12 +378,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                   ),
                   CustomImageView(
                     imagePath: ImageConstant.imgUser91,
-                    height: getSize(
-                      248,
-                    ),
-                    width: getSize(
-                      248,
-                    ),
+                    width: MediaQuery.sizeOf(context).width * 3 / 10,
                     alignment: Alignment.topCenter,
                   ),
                 ],

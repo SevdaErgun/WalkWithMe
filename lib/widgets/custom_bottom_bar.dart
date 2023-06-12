@@ -62,10 +62,10 @@ class CustomBottomBar extends StatelessWidget {
                     ? bottomMenuList[index].icon
                     : null,
                 height: getSize(
-                  62,
+                  35,
                 ),
                 width: getSize(
-                  62,
+                  35,
                 ),
               ),
               activeIcon: CustomImageView(
@@ -76,10 +76,10 @@ class CustomBottomBar extends StatelessWidget {
                     ? bottomMenuList[index].icon
                     : null,
                 height: getSize(
-                  67,
+                  35,
                 ),
                 width: getSize(
-                  67,
+                  35,
                 ),
               ),
               label: '',
