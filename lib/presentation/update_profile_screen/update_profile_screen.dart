@@ -1,3 +1,7 @@
+import '../../widgets/app_bar/appbar_subtitle_1.dart';
+import '../../widgets/app_bar/appbar_subtitle_2.dart';
+import '../../widgets/app_bar/appbar_title.dart';
+import '../../widgets/app_bar/custom_app_bar.dart';
 import 'controller/update_profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
@@ -17,152 +21,118 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: ColorConstant.gray200,
+        appBar: CustomAppBar(
+          height: 70,
+          title: AppbarTitle(
+            text: "lbl_walkwithme2".tr,
+            margin: getMargin(
+              left: 30,
+            ),
+          ),
+          actions: [
+            AppbarSubtitle2(
+              text: "lbl_confirm".tr,
+              margin: getMargin(left: 45, top: 25),
+            ),
+            AppbarSubtitle1(
+              text: "lbl_cancel".tr,
+              margin: getMargin(
+                left: 20,
+                top: 25,
+                right: 25,
+              ),
+            ),
+          ],
+          styleType: Style.bgShadowBlack9003f,
+        ),
         body: Form(
           key: _formKey,
           child: SingleChildScrollView(
-            child: Padding(
-              padding: getPadding(
-                bottom: 5,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    height: getVerticalSize(
-                      29,
-                    ),
-                    width: getHorizontalSize(
-                      766,
-                    ),
-                    decoration: BoxDecoration(
-                      color: ColorConstant.gray200,
-                      boxShadow: [
-                        BoxShadow(
-                          color: ColorConstant.black9003f,
-                          spreadRadius: getHorizontalSize(
-                            2,
-                          ),
-                          blurRadius: getHorizontalSize(
-                            2,
-                          ),
-                          offset: Offset(
-                            0,
-                            10,
-                          ),
-                        ),
-                      ],
-                    ),
+              child: Container(
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CustomImageView(
+                  imagePath: ImageConstant.imgRefresh1,
+                  width: MediaQuery.sizeOf(context).width * 3.5 / 10,
+                  margin: getMargin(
+                    top: 72,
                   ),
-                  CustomImageView(
-                    imagePath: ImageConstant.imgRefresh1,
-                    height: getSize(
-                      212,
-                    ),
-                    width: getSize(
-                      212,
-                    ),
-                    margin: getMargin(
-                      top: 72,
-                    ),
+                ),
+                CustomTextFormField(
+                  width: MediaQuery.sizeOf(context).width * 8 / 10,
+                  focusNode: FocusNode(),
+                  autofocus: false,
+                  controller: controller.nameController,
+                  hintText: "lbl_name".tr,
+                  margin: getMargin(
+                    top: 45,
                   ),
-                  CustomTextFormField(
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    focusNode: FocusNode(),
-                    autofocus: true,
-                    controller: controller.nameController,
-                    hintText: "lbl_name".tr,
-                    margin: getMargin(
-                      top: 72,
-                    ),
-                    validator: (value) {
-                      if (!isText(value)) {
-                        return "Please enter valid text";
-                      }
-                      return null;
-                    },
+                  validator: (value) {
+                    if (!isText(value)) {
+                      return "Please enter valid text";
+                    }
+                    return null;
+                  },
+                ),
+                CustomTextFormField(
+                  width: MediaQuery.sizeOf(context).width * 8 / 10,
+                  focusNode: FocusNode(),
+                  autofocus: false,
+                  controller: controller.surnameController,
+                  hintText: "lbl_surname".tr,
+                  margin: getMargin(
+                    top: 33,
                   ),
-                  CustomTextFormField(
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    focusNode: FocusNode(),
-                    autofocus: true,
-                    controller: controller.surnameController,
-                    hintText: "lbl_surname".tr,
-                    margin: getMargin(
-                      top: 33,
-                    ),
-                    validator: (value) {
-                      if (!isText(value)) {
-                        return "Please enter valid text";
-                      }
-                      return null;
-                    },
+                  validator: (value) {
+                    if (!isText(value)) {
+                      return "Please enter valid text";
+                    }
+                    return null;
+                  },
+                ),
+                CustomTextFormField(
+                  width: MediaQuery.sizeOf(context).width * 8 / 10,
+                  focusNode: FocusNode(),
+                  autofocus: false,
+                  controller: controller.emailController,
+                  hintText: "lbl_email".tr,
+                  margin: getMargin(
+                    top: 33,
                   ),
-                  CustomTextFormField(
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    focusNode: FocusNode(),
-                    autofocus: true,
-                    controller: controller.emailController,
-                    hintText: "lbl_email".tr,
-                    margin: getMargin(
-                      top: 33,
-                    ),
-                    textInputType: TextInputType.emailAddress,
-                    validator: (value) {
-                      if (value == null ||
-                          (!isValidEmail(value, isRequired: true))) {
-                        return "Please enter valid email";
-                      }
-                      return null;
-                    },
+                  textInputType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null ||
+                        (!isValidEmail(value, isRequired: true))) {
+                      return "Please enter valid email";
+                    }
+                    return null;
+                  },
+                ),
+                CustomTextFormField(
+                  width: MediaQuery.sizeOf(context).width * 8 / 10,
+                  focusNode: FocusNode(),
+                  autofocus: false,
+                  controller: controller.passwordController,
+                  hintText: "lbl_password".tr,
+                  margin: getMargin(
+                    top: 33,
                   ),
-                  CustomTextFormField(
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    focusNode: FocusNode(),
-                    autofocus: true,
-                    controller: controller.passwordController,
-                    hintText: "lbl_password".tr,
-                    margin: getMargin(
-                      top: 33,
-                    ),
-                    textInputAction: TextInputAction.done,
-                    textInputType: TextInputType.visiblePassword,
-                    validator: (value) {
-                      if (value == null ||
-                          (!isValidPassword(value, isRequired: true))) {
-                        return "Please enter valid password";
-                      }
-                      return null;
-                    },
-                    isObscureText: true,
-                  ),
-                  CustomButton(
-                    height: getVerticalSize(
-                      77,
-                    ),
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    text: "lbl_update".tr,
-                    margin: getMargin(
-                      top: 94,
-                    ),
-                    variant: ButtonVariant.FillBlue30001,
-                    shape: ButtonShape.RoundedBorder13,
-                    padding: ButtonPadding.PaddingAll19,
-                    fontStyle: ButtonFontStyle.RobotoRomanBold32,
-                  ),
-                ],
-              ),
+                  textInputAction: TextInputAction.done,
+                  textInputType: TextInputType.visiblePassword,
+                  validator: (value) {
+                    if (value == null ||
+                        (!isValidPassword(value, isRequired: true))) {
+                      return "Please enter valid password";
+                    }
+                    return null;
+                  },
+                  isObscureText: true,
+                ),
+              ],
             ),
-          ),
+          )),
         ),
         bottomNavigationBar: CustomBottomBar(
           onChanged: (BottomBarEnum type) {
