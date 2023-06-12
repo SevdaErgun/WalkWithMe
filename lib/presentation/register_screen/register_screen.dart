@@ -1,3 +1,5 @@
+import 'package:flutter/gestures.dart';
+
 import 'controller/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
@@ -206,11 +208,25 @@ class RegisterScreen extends GetWidget<RegisterController> {
                               padding: getPadding(
                                 top: 20,
                               ),
-                              child: Text(
-                                "msg_return_to_login".tr,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                                style: AppStyle.txtRobotoRomanRegular24,
+                              // child: Text(
+                              //   "msg_return_to_login".tr,
+                              //   overflow: TextOverflow.ellipsis,
+                              //   textAlign: TextAlign.left,
+                              //   style: AppStyle.txtRobotoRomanRegular24,
+                              // ),
+                              child:  RichText(
+                                text: TextSpan(
+                                  style: AppStyle.txtRobotoRomanRegular24.copyWith(
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                        text:"msg_return_to_login".tr,
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () => Get.toNamed(AppRoutes.loginScreen)
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
