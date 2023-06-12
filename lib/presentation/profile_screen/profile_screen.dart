@@ -28,11 +28,16 @@ class ProfileScreen extends GetWidget<ProfileController> {
                 left: 25,
                 right: 25,
               ),
-              child: Text(
-                "lbl_update_info".tr,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.left,
-                style: AppStyle.txtRobotoRomanRegular24Bluegray700,
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(AppRoutes.updateProfileScreen);
+                },
+                child: Text(
+                  "lbl_update_info".tr,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.left,
+                  style: AppStyle.txtRobotoRomanRegular24Bluegray700,
+                ),
               ),
             ),
           ],
