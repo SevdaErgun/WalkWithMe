@@ -1,3 +1,5 @@
+import '../../widgets/app_bar/appbar_title.dart';
+import '../../widgets/app_bar/custom_app_bar.dart';
 import '../home_screen/widgets/home_item_widget.dart';
 import 'controller/home_controller.dart';
 import 'models/home_item_model.dart';
@@ -13,39 +15,44 @@ class HomeScreen extends GetWidget<HomeController> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorConstant.gray200,
-        body: Container(
-          width: getHorizontalSize(
-            766,
+        appBar: CustomAppBar(
+          height: 70,
+          title: AppbarTitle(
+            text: "lbl_walkwithme2".tr,
+            margin: getMargin(
+              left: 30,
+            ),
           ),
+          actions: [
+            Container(
+                child: GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoutes.dogsScreen);
+              },
+              child: Image.asset(
+                ImageConstant.imgDogIcon,
+                width: 35,
+              ),
+            )),
+            SizedBox(
+              width: 20,
+            ),
+            Container(
+              margin: EdgeInsets.only(right: 25),
+              child: Icon(
+                Icons.notifications_outlined,
+                color: Colors.black,
+                size: 35,
+              ),
+            )
+          ],
+          styleType: Style.bgShadowBlack9003f,
+        ),
+        body: Container(
+          width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                height: getVerticalSize(
-                  29,
-                ),
-                width: getHorizontalSize(
-                  766,
-                ),
-                decoration: BoxDecoration(
-                  color: ColorConstant.gray200,
-                  boxShadow: [
-                    BoxShadow(
-                      color: ColorConstant.black9003f,
-                      spreadRadius: getHorizontalSize(
-                        2,
-                      ),
-                      blurRadius: getHorizontalSize(
-                        2,
-                      ),
-                      offset: Offset(
-                        0,
-                        10,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               Expanded(
                 child: Padding(
                   padding: getPadding(

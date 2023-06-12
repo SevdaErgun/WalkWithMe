@@ -1,4 +1,6 @@
+import '../../widgets/custom_bottom_bar.dart';
 import '../dogs_screen/widgets/dogs_item_widget.dart';
+import '../home_one_page/home_one_page.dart';
 import 'controller/dogs_controller.dart';
 import 'models/dogs_item_model.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,11 @@ class DogsScreen extends GetWidget<DogsController> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorConstant.gray200,
+        bottomNavigationBar: CustomBottomBar(
+          onChanged: (BottomBarEnum type) {
+            Get.toNamed(getCurrentRoute(type), id: 1);
+          },
+        ),
         appBar: CustomAppBar(
           height: getVerticalSize(
             95,
@@ -26,58 +33,79 @@ class DogsScreen extends GetWidget<DogsController> {
             ),
           ),
           actions: [
-            AppbarSubtitle2(
-              text: "lbl_confirm".tr,
-              margin: getMargin(
-                left: 45,
-                top: 40,
-                right: 30,
-              ),
-            ),
-            AppbarSubtitle1(
-              text: "lbl_cancel".tr,
-              margin: getMargin(
-                left: 37,
-                top: 40,
-                right: 75,
-              ),
-            ),
+            Container(
+              margin: EdgeInsets.only(right: 30),
+              child: GestureDetector(
+                  onTap: () {
+                    Get.toNamed(AppRoutes.addDogScreen);
+                  },
+                  child: Icon(
+                    Icons.add_box_outlined,
+                    size: 35,
+                    color: Colors.black,
+                  )),
+            )
           ],
           styleType: Style.bgShadowBlack9003f,
         ),
-        body: Padding(
-          padding: getPadding(
-            left: 88,
-            top: 146,
-            right: 75,
-          ),
-          child: Obx(
-            () => ListView.separated(
-              physics: BouncingScrollPhysics(),
-              shrinkWrap: true,
-              separatorBuilder: (
-                context,
-                index,
-              ) {
-                return SizedBox(
-                  height: getVerticalSize(
-                    76,
-                  ),
-                );
-              },
-              itemCount:
-                  controller.dogsModelObj.value.dogsItemList.value.length,
-              itemBuilder: (context, index) {
-                DogsItemModel model =
-                    controller.dogsModelObj.value.dogsItemList.value[index];
-                return DogsItemWidget(
-                  model,
-                );
-              },
+        body: Container(
+            alignment: Alignment.center,
+            padding: getPadding(
+              top: 55,
             ),
-          ),
-        ),
+            child: Container(
+              width: MediaQuery.sizeOf(context).width * 9 / 10,
+              child: Obx(
+                () => ListView.separated(
+                  physics: BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  separatorBuilder: (
+                    context,
+                    index,
+                  ) {
+                    return SizedBox(
+                      height: getVerticalSize(
+                        76,
+                      ),
+                    );
+                  },
+                  itemCount:
+                      controller.dogsModelObj.value.dogsItemList.value.length,
+                  itemBuilder: (context, index) {
+                    DogsItemModel model =
+                        controller.dogsModelObj.value.dogsItemList.value[index];
+                    return DogsItemWidget(
+                      model,
+                    );
+                  },
+                ),
+              ),
+            )),
       ),
     );
+  }
+
+  ///Handling route based on bottom click actions
+  String getCurrentRoute(BottomBarEnum type) {
+    switch (type) {
+      case BottomBarEnum.Home11:
+        return AppRoutes.homeOnePage;
+      case BottomBarEnum.Plus51:
+        return "/";
+      case BottomBarEnum.User81:
+        return "/";
+      default:
+        return "/";
+    }
+  }
+
+  ///Handling page based on route
+  Widget getCurrentPage(String currentRoute) {
+    switch (currentRoute) {
+      case AppRoutes.homeOnePage:
+        return HomeOnePage();
+      default:
+        return DefaultWidget();
+    }
   }
 }

@@ -21,10 +21,10 @@ class DogsItemWidget extends StatelessWidget {
         children: [
           Container(
             padding: getPadding(
-              left: 37,
-              top: 32,
-              right: 37,
-              bottom: 32,
+              left: 18,
+              top: 20,
+              right: 18,
+              bottom: 20,
             ),
             decoration:
                 AppDecoration.gradientDeeporangeA40001Orange300.copyWith(
@@ -79,7 +79,7 @@ class DogsItemWidget extends StatelessWidget {
                 ),
                 Padding(
                   padding: getPadding(
-                    top: 44,
+                    top: 25,
                     bottom: 7,
                   ),
                   child: Text(
@@ -94,9 +94,9 @@ class DogsItemWidget extends StatelessWidget {
           ),
           Padding(
             padding: getPadding(
-              left: 95,
-              top: 61,
-              bottom: 63,
+              left: 25,
+              top: 25,
+              bottom: 25,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
