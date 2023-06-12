@@ -105,8 +105,10 @@ class LoginScreen extends GetWidget<LoginController> {
                                         ),
                                         CustomButton(
                                           onTap: () {
+                                            /*Get.toNamed(
+                                                AppRoutes.registerScreen);*/
                                             Get.toNamed(
-                                                AppRoutes.registerScreen);
+                                                AppRoutes.profileScreen);
                                           },
                                           height: getVerticalSize(
                                             65,

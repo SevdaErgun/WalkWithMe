@@ -14,10 +14,10 @@ class AppStyle {
   static TextStyle txtRobotoRomanBlack32 = TextStyle(
     color: ColorConstant.gray70001,
     fontSize: getFontSize(
-      32,
+      24,
     ),
     fontFamily: 'Roboto',
-    fontWeight: FontWeight.w900,
+    fontWeight: FontWeight.w700,
   );
 
   static TextStyle txtRobotoRomanBlack40 = TextStyle(
@@ -68,7 +68,7 @@ class AppStyle {
   static TextStyle txtRobotoRomanRegular24Bluegray700 = TextStyle(
     color: ColorConstant.blueGray700,
     fontSize: getFontSize(
-      24,
+      20,
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
