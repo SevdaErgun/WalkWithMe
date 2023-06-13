@@ -1,3 +1,4 @@
+import '../../widgets/custom_text_form_field.dart';
 import 'controller/add_schedule_for_walkers_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
@@ -28,17 +29,16 @@ class AddScheduleForWalkersScreen
             AppbarSubtitle2(
               text: "lbl_confirm".tr,
               margin: getMargin(
-                left: 45,
-                top: 40,
-                right: 30,
+                top: 35,
+                right: 15,
               ),
             ),
             AppbarSubtitle1(
               text: "lbl_cancel".tr,
               margin: getMargin(
-                left: 37,
-                top: 40,
-                right: 75,
+                left: 10,
+                top: 35,
+                right: 30,
               ),
             ),
           ],
@@ -48,12 +48,12 @@ class AddScheduleForWalkersScreen
           width: size.width,
           child: SingleChildScrollView(
             padding: getPadding(
-              top: 146,
+              top: 85,
             ),
             child: Container(
               margin: getMargin(
-                left: 88,
-                right: 75,
+                left: MediaQuery.sizeOf(context).width * 1 / 10,
+                right: MediaQuery.sizeOf(context).width * 1 / 10,
                 bottom: 5,
               ),
               decoration: AppDecoration.outlineBlack9003f.copyWith(
@@ -64,12 +64,7 @@ class AddScheduleForWalkersScreen
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
-                    height: getVerticalSize(
-                      261,
-                    ),
-                    width: getHorizontalSize(
-                      603,
-                    ),
+                    width: MediaQuery.sizeOf(context).width * 8 / 10,
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
@@ -77,15 +72,12 @@ class AddScheduleForWalkersScreen
                           alignment: Alignment.topCenter,
                           child: Container(
                             height: getVerticalSize(
-                              158,
-                            ),
-                            width: getHorizontalSize(
-                              603,
+                              125,
                             ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
                                 getHorizontalSize(
-                                  60,
+                                  25,
                                 ),
                               ),
                               gradient: LinearGradient(
@@ -98,15 +90,15 @@ class AddScheduleForWalkersScreen
                                   1,
                                 ),
                                 colors: [
-                                  ColorConstant.deepOrangeA40001,
-                                  ColorConstant.orange30001,
+                                  ColorConstant.deepOrangeA400,
+                                  ColorConstant.orange300,
                                 ],
                               ),
                             ),
                           ),
                         ),
                         Align(
-                          alignment: Alignment.bottomCenter,
+                          alignment: Alignment.center,
                           child: Card(
                             clipBehavior: Clip.antiAlias,
                             elevation: 0,
@@ -123,16 +115,10 @@ class AddScheduleForWalkersScreen
                             ),
                             child: Container(
                               height: getSize(
-                                235,
+                                130,
                               ),
                               width: getSize(
-                                235,
-                              ),
-                              padding: getPadding(
-                                left: 46,
-                                top: 52,
-                                right: 46,
-                                bottom: 52,
+                                130,
                               ),
                               decoration:
                                   AppDecoration.outlineBlack900.copyWith(
@@ -144,12 +130,12 @@ class AddScheduleForWalkersScreen
                                   CustomImageView(
                                     imagePath: ImageConstant.imgDogwalking1,
                                     height: getSize(
-                                      130,
+                                      60,
                                     ),
                                     width: getSize(
-                                      130,
+                                      60,
                                     ),
-                                    alignment: Alignment.centerRight,
+                                    alignment: Alignment.center,
                                   ),
                                 ],
                               ),
@@ -159,28 +145,12 @@ class AddScheduleForWalkersScreen
                       ],
                     ),
                   ),
-                  Container(
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    margin: getMargin(
-                      top: 62,
-                    ),
-                    padding: getPadding(
-                      left: 15,
-                      top: 5,
-                      right: 15,
-                      bottom: 5,
-                    ),
-                    decoration: AppDecoration.txtOutlineBluegray700.copyWith(
-                      borderRadius: BorderRadiusStyle.txtRoundedBorder13,
-                    ),
-                    child: Text(
-                      "lbl_title".tr,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.left,
-                      style: AppStyle.txtRobotoRomanRegular24,
-                    ),
+                  CustomTextFormField(
+                    focusNode: FocusNode(),
+                    autofocus: false,
+                    // controller: controller.surnameController,
+                    hintText: "lbl_title".tr,
+                    margin: getMargin(left: 30, top: 60, right: 30),
                   ),
                   Container(
                     margin: getMargin(
@@ -228,52 +198,19 @@ class AddScheduleForWalkersScreen
                       ],
                     ),
                   ),
-                  Container(
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    margin: getMargin(
-                      top: 33,
-                    ),
-                    padding: getPadding(
-                      left: 15,
-                      top: 5,
-                      right: 15,
-                      bottom: 5,
-                    ),
-                    decoration: AppDecoration.txtOutlineBluegray700.copyWith(
-                      borderRadius: BorderRadiusStyle.txtRoundedBorder13,
-                    ),
-                    child: Text(
-                      "lbl_start_date".tr,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.left,
-                      style: AppStyle.txtRobotoRomanRegular24,
-                    ),
+                  CustomTextFormField(
+                    focusNode: FocusNode(),
+                    autofocus: false,
+                    // controller: controller.surnameController,
+                    hintText: "lbl_start_date".tr,
+                    margin: getMargin(left: 30, top: 30, right: 30),
                   ),
-                  Container(
-                    width: getHorizontalSize(
-                      502,
-                    ),
-                    margin: getMargin(
-                      top: 33,
-                      bottom: 92,
-                    ),
-                    padding: getPadding(
-                      left: 15,
-                      top: 6,
-                      right: 15,
-                      bottom: 6,
-                    ),
-                    decoration: AppDecoration.txtOutlineBluegray700.copyWith(
-                      borderRadius: BorderRadiusStyle.txtRoundedBorder13,
-                    ),
-                    child: Text(
-                      "lbl_finish_date".tr,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.left,
-                      style: AppStyle.txtRobotoRomanRegular24,
-                    ),
+                  CustomTextFormField(
+                    focusNode: FocusNode(),
+                    autofocus: false,
+                    // controller: controller.surnameController,
+                    hintText: "lbl_finish_date".tr,
+                    margin: getMargin(left: 30, top: 30, right: 30, bottom: 30),
                   ),
                 ],
               ),
