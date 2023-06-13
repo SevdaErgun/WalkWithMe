@@ -7,6 +7,9 @@ dependencies:
   flutter: 
     sdk: flutter
   get: ^4.6.5
+  sqflite: ^2.2.2
+  path_provider: ^2.0.11
+  path: ^1.8.2
   connectivity_plus: ^2.3.6
   shared_preferences: ^2.0.15
   cached_network_image: ^3.2.1
@@ -29,3 +32,6 @@ flutter:
           weight: 400
         - asset: assets/fonts/RobotoRomanBold.ttf
           weight: 700
+    - family: Dancing Script
+      fonts: 
+        - asset: assets/fonts/DancingScriptBold.ttf

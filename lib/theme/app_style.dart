@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
 
 class AppStyle {
+  static TextStyle txtDancingScript = TextStyle(
+    color: ColorConstant.logoColor,
+    fontSize: getFontSize(
+      28,
+    ),
+    fontFamily: 'Dancing Script',
+    fontWeight: FontWeight.bold,
+  );
+
   static TextStyle txtRobotoRomanRegular24Blue300 = TextStyle(
     color: ColorConstant.blue300,
     fontSize: getFontSize(
