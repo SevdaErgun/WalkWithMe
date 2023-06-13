@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:walkwithme/services/db/database_helper.dart';
 
 import 'core/app_export.dart';
+
+final dbHelper = DatabaseHelper();
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,6 +13,7 @@ void main() {
     DeviceOrientation.portraitUp,
   ]).then((value) {
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
+    dbHelper.init();
     runApp(MyApp());
   });
 }
