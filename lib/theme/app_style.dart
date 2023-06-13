@@ -56,19 +56,19 @@ class AppStyle {
     fontWeight: FontWeight.w400,
   );
 
-  static TextStyle txtRobotoRomanRegular24Black900 = TextStyle(
-    color: ColorConstant.black900,
+  static TextStyle txtRobotoRomanRegular14Black900 = TextStyle(
+    color: ColorConstant.blackText,
     fontSize: getFontSize(
-      24,
+      16,
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
   );
 
-  static TextStyle txtRobotoRomanRegular20Red400 = TextStyle(
+  static TextStyle txtRobotoRomanRegular18Red400 = TextStyle(
     color: ColorConstant.red400,
     fontSize: getFontSize(
-      20,
+      18,
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
@@ -111,7 +111,7 @@ class AppStyle {
   );
 
   static TextStyle txtRobotoRomanRegular20Black900 = TextStyle(
-    color: ColorConstant.black900,
+    color: ColorConstant.blackText,
     fontSize: getFontSize(
       16,
     ),
@@ -120,7 +120,7 @@ class AppStyle {
   );
 
   static TextStyle txtRobotoRegular20 = TextStyle(
-    color: ColorConstant.black900,
+    color: ColorConstant.blackText,
     fontSize: getFontSize(
       20,
     ),

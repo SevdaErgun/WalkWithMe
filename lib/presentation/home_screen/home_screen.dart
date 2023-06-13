@@ -14,7 +14,7 @@ class HomeScreen extends GetWidget<HomeController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorConstant.gray200,
+        backgroundColor: ColorConstant.projectBackground,
         appBar: CustomAppBar(
           height: 70,
           title: AppbarTitle(
@@ -89,7 +89,7 @@ class HomeScreen extends GetWidget<HomeController> {
         ),
         bottomNavigationBar: CustomBottomBar(
           onChanged: (BottomBarEnum type) {
-            Get.toNamed(getCurrentRoute(type), id: 1);
+            Get.toNamed(getCurrentRoute(type));
           },
         ),
       ),
@@ -100,11 +100,11 @@ class HomeScreen extends GetWidget<HomeController> {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Home11:
-        return AppRoutes.homeOnePage;
+        return AppRoutes.homeScreen;
       case BottomBarEnum.Plus51:
-        return "/";
+        return AppRoutes.addScheduleForWalkersScreen;
       case BottomBarEnum.User81:
-        return "/";
+        return AppRoutes.profileScreen;
       default:
         return "/";
     }

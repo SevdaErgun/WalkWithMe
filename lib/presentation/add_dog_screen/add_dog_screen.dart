@@ -87,7 +87,7 @@ class AddDogScreen extends GetWidget<AddDogController> {
                                 ),
                                 colors: [
                                   ColorConstant.deepOrangeA400,
-                                  ColorConstant.orange300,
+                                  ColorConstant.navigationBar,
                                 ],
                               ),
                             ),

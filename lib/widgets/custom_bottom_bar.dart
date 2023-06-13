@@ -30,7 +30,7 @@ class CustomBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorConstant.orange300,
+        color: ColorConstant.navigationBar,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(
             getHorizontalSize(

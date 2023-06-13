@@ -98,7 +98,7 @@ class HomeOneItemWidget extends StatelessWidget {
                           "lbl_name_surname".tr,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
-                          style: AppStyle.txtRobotoRomanRegular24Black900,
+                          style: AppStyle.txtRobotoRomanRegular14Black900,
                         ),
                       ),
                       Container(
@@ -206,7 +206,7 @@ class HomeOneItemWidget extends StatelessWidget {
                 "lbl_1_hour_ago".tr,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.left,
-                style: AppStyle.txtRobotoRomanRegular20Red400,
+                style: AppStyle.txtRobotoRomanRegular14Black900,
               ),
             ),
           ),
