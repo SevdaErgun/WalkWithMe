@@ -95,7 +95,7 @@ class AppStyle {
   static TextStyle txtRobotoRomanRegular20Black900 = TextStyle(
     color: ColorConstant.black900,
     fontSize: getFontSize(
-      20,
+      16,
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,

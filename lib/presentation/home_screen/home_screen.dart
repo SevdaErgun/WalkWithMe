@@ -50,16 +50,13 @@ class HomeScreen extends GetWidget<HomeController> {
         ),
         body: Container(
           width: double.infinity,
+          padding: EdgeInsets.only(top: 45),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
-                child: Padding(
-                  padding: getPadding(
-                    left: 82,
-                    top: 97,
-                    right: 59,
-                  ),
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width * 9 / 10,
                   child: Obx(
                     () => ListView.separated(
                       physics: BouncingScrollPhysics(),
@@ -70,7 +67,7 @@ class HomeScreen extends GetWidget<HomeController> {
                       ) {
                         return SizedBox(
                           height: getVerticalSize(
-                            97,
+                            50,
                           ),
                         );
                       },
