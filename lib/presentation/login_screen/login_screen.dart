@@ -225,14 +225,14 @@ class LoginScreen extends GetWidget<LoginController> {
                           child: RichText(
                             text: TextSpan(
                               style: AppStyle.txtRobotoRomanRegular24.copyWith(
-                                   decoration: TextDecoration.underline,
+                                decoration: TextDecoration.underline,
                               ),
                               children: <TextSpan>[
                                 TextSpan(
                                     text: "msg_don_t_you_have_an".tr,
                                     recognizer: TapGestureRecognizer()
-                                      ..onTap = () => Get.toNamed(AppRoutes.registerScreen)
-                                ),
+                                      ..onTap = () => Get.toNamed(
+                                          AppRoutes.registerScreen)),
                               ],
                             ),
                           ),
@@ -250,11 +250,11 @@ class LoginScreen extends GetWidget<LoginController> {
   }
 
   void login() async {
-  var row = await customerDatabase.getById(controller.emailController.text,controller.passwordController.text, "Walker");
-  if(row.isNotEmpty )
-    Get.toNamed(AppRoutes.profileScreen);
-  else
-   print( "Wrong password or email.");
+    var row = await customerDatabase.getById(controller.emailController.text,
+        controller.passwordController.text, "Walker");
+    if (row.isNotEmpty)
+      Get.toNamed(AppRoutes.profileScreen);
+    else
+      print("Wrong password or email.");
   }
-
 }
