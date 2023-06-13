@@ -5,7 +5,6 @@ import 'controller/home_controller.dart';
 import 'models/home_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
-import 'package:walkwithme/presentation/home_one_page/home_one_page.dart';
 import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 
 // ignore_for_file: must_be_immutable
@@ -113,8 +112,8 @@ class HomeScreen extends GetWidget<HomeController> {
   ///Handling page based on route
   Widget getCurrentPage(String currentRoute) {
     switch (currentRoute) {
-      case AppRoutes.homeOnePage:
-        return HomeOnePage();
+      case AppRoutes.homeScreen:
+        return HomeScreen();
       default:
         return DefaultWidget();
     }

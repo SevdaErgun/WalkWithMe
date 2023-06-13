@@ -1,3 +1,5 @@
+import 'package:walkwithme/presentation/home_screen/home_screen.dart';
+
 import '../../widgets/app_bar/appbar_subtitle_1.dart';
 import '../../widgets/app_bar/appbar_subtitle_2.dart';
 import '../../widgets/app_bar/appbar_title.dart';
@@ -6,7 +8,6 @@ import 'controller/update_profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
 import 'package:walkwithme/core/utils/validation_functions.dart';
-import 'package:walkwithme/presentation/home_one_page/home_one_page.dart';
 import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 import 'package:walkwithme/widgets/custom_button.dart';
 import 'package:walkwithme/widgets/custom_text_form_field.dart';
@@ -147,7 +148,7 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Home11:
-        return AppRoutes.homeOnePage;
+        return AppRoutes.homeScreen;
       case BottomBarEnum.Plus51:
         return "/";
       case BottomBarEnum.User81:
@@ -160,8 +161,8 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
   ///Handling page based on route
   Widget getCurrentPage(String currentRoute) {
     switch (currentRoute) {
-      case AppRoutes.homeOnePage:
-        return HomeOnePage();
+      case AppRoutes.homeScreen:
+        return HomeScreen();
       default:
         return DefaultWidget();
     }

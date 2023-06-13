@@ -1,6 +1,7 @@
+import 'package:walkwithme/presentation/home_screen/home_screen.dart';
+
 import '../../widgets/custom_bottom_bar.dart';
 import '../dogs_screen/widgets/dogs_item_widget.dart';
-import '../home_one_page/home_one_page.dart';
 import 'controller/dogs_controller.dart';
 import 'models/dogs_item_model.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +90,7 @@ class DogsScreen extends GetWidget<DogsController> {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Home11:
-        return AppRoutes.homeOnePage;
+        return AppRoutes.homeScreen;
       case BottomBarEnum.Plus51:
         return "/";
       case BottomBarEnum.User81:
@@ -102,8 +103,8 @@ class DogsScreen extends GetWidget<DogsController> {
   ///Handling page based on route
   Widget getCurrentPage(String currentRoute) {
     switch (currentRoute) {
-      case AppRoutes.homeOnePage:
-        return HomeOnePage();
+      case AppRoutes.homeScreen:
+        return HomeScreen();
       default:
         return DefaultWidget();
     }

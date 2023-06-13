@@ -1,9 +1,10 @@
+import 'package:walkwithme/presentation/home_screen/home_screen.dart';
+
 import '../history_screen/widgets/history_item_widget.dart';
 import 'controller/history_controller.dart';
 import 'models/history_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
-import 'package:walkwithme/presentation/home_one_page/home_one_page.dart';
 import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 
 // ignore_for_file: must_be_immutable
@@ -96,7 +97,7 @@ class HistoryScreen extends GetWidget<HistoryController> {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Home11:
-        return AppRoutes.homeOnePage;
+        return AppRoutes.homeScreen;
       case BottomBarEnum.Plus51:
         return "/";
       case BottomBarEnum.User81:
@@ -109,8 +110,8 @@ class HistoryScreen extends GetWidget<HistoryController> {
   ///Handling page based on route
   Widget getCurrentPage(String currentRoute) {
     switch (currentRoute) {
-      case AppRoutes.homeOnePage:
-        return HomeOnePage();
+      case AppRoutes.homeScreen:
+        return HomeScreen();
       default:
         return DefaultWidget();
     }
