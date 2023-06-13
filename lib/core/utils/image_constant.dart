@@ -1,6 +1,8 @@
 class ImageConstant {
   static String loginIMG = 'assets/images/img_login.png';
 
+  static String imgProjectLogo = 'assets/images/img_project_logo.png';
+
   static String imgDogIcon = 'assets/images/img_dog_icon.png';
 
   static String imgEllipse8 = 'assets/images/img_ellipse8.png';
