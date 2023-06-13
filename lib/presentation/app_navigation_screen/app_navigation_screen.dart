@@ -377,9 +377,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                                                   .blueGray400))
                                                     ]))),
                                         GestureDetector(
-                                            onTap: () {
-                                              onTapHomeOneContainer();
-                                            },
+                                            onTap: () {},
                                             child: Container(
                                                 decoration:
                                                     AppDecoration.fillWhiteA700,
@@ -423,9 +421,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                                                   .blueGray400))
                                                     ]))),
                                         GestureDetector(
-                                            onTap: () {
-                                              onTapNotificationsOne();
-                                            },
+                                            onTap: () {},
                                             child: Container(
                                                 decoration:
                                                     AppDecoration.fillWhiteA700,
@@ -469,9 +465,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                                                   .blueGray400))
                                                     ]))),
                                         GestureDetector(
-                                            onTap: () {
-                                              onTapUpdateProfileOne();
-                                            },
+                                            onTap: () {},
                                             child: Container(
                                                 decoration:
                                                     AppDecoration.fillWhiteA700,
@@ -740,24 +734,6 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
   onTapAddscheduleforwalkers() {
     Get.toNamed(
       AppRoutes.addScheduleForWalkersScreen,
-    );
-  }
-
-  onTapHomeOneContainer() {
-    Get.toNamed(
-      AppRoutes.homeOneContainerScreen,
-    );
-  }
-
-  onTapNotificationsOne() {
-    Get.toNamed(
-      AppRoutes.notificationsOneScreen,
-    );
-  }
-
-  onTapUpdateProfileOne() {
-    Get.toNamed(
-      AppRoutes.updateProfileOneScreen,
     );
   }
 

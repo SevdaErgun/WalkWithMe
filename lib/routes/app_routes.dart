@@ -12,12 +12,6 @@ import 'package:walkwithme/presentation/dogs_screen/dogs_screen.dart';
 import 'package:walkwithme/presentation/dogs_screen/binding/dogs_binding.dart';
 import 'package:walkwithme/presentation/add_schedule_for_walkers_screen/add_schedule_for_walkers_screen.dart';
 import 'package:walkwithme/presentation/add_schedule_for_walkers_screen/binding/add_schedule_for_walkers_binding.dart';
-import 'package:walkwithme/presentation/home_one_container_screen/home_one_container_screen.dart';
-import 'package:walkwithme/presentation/home_one_container_screen/binding/home_one_container_binding.dart';
-import 'package:walkwithme/presentation/notifications_one_screen/notifications_one_screen.dart';
-import 'package:walkwithme/presentation/notifications_one_screen/binding/notifications_one_binding.dart';
-import 'package:walkwithme/presentation/update_profile_one_screen/update_profile_one_screen.dart';
-import 'package:walkwithme/presentation/update_profile_one_screen/binding/update_profile_one_binding.dart';
 import 'package:walkwithme/presentation/notifications_screen/notifications_screen.dart';
 import 'package:walkwithme/presentation/notifications_screen/binding/notifications_binding.dart';
 import 'package:walkwithme/presentation/history_screen/history_screen.dart';
@@ -45,14 +39,6 @@ class AppRoutes {
 
   static const String addScheduleForWalkersScreen =
       '/add_schedule_for_walkers_screen';
-
-  static const String homeOnePage = '/home_one_page';
-
-  static const String homeOneContainerScreen = '/home_one_container_screen';
-
-  static const String notificationsOneScreen = '/notifications_one_screen';
-
-  static const String updateProfileOneScreen = '/update_profile_one_screen';
 
   static const String notificationsScreen = '/notifications_screen';
 
@@ -114,27 +100,6 @@ class AppRoutes {
       page: () => AddScheduleForWalkersScreen(),
       bindings: [
         AddScheduleForWalkersBinding(),
-      ],
-    ),
-    GetPage(
-      name: homeOneContainerScreen,
-      page: () => HomeOneContainerScreen(),
-      bindings: [
-        HomeOneContainerBinding(),
-      ],
-    ),
-    GetPage(
-      name: notificationsOneScreen,
-      page: () => NotificationsOneScreen(),
-      bindings: [
-        NotificationsOneBinding(),
-      ],
-    ),
-    GetPage(
-      name: updateProfileOneScreen,
-      page: () => UpdateProfileOneScreen(),
-      bindings: [
-        UpdateProfileOneBinding(),
       ],
     ),
     GetPage(
