@@ -11,6 +11,15 @@ class AppStyle {
     fontWeight: FontWeight.bold,
   );
 
+  static TextStyle txtDancingScript32 = TextStyle(
+    color: ColorConstant.logoColor,
+    fontSize: getFontSize(
+      32,
+    ),
+    fontFamily: 'Dancing Script',
+    fontWeight: FontWeight.bold,
+  );
+
   static TextStyle txtRobotoRomanRegular24Blue300 = TextStyle(
     color: ColorConstant.blue300,
     fontSize: getFontSize(

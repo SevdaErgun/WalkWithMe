@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class ColorConstant {
   static Color projectBackground = fromHex('#D6E9EA');
 
+  static Color cardBackground = fromHex('#F9F2F2');
+
   static Color logoColor = fromHex('#1E1E1E');
 
   static Color gray700 = fromHex('#616763');
