@@ -134,81 +134,138 @@ class LoginScreen extends GetWidget<LoginController> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
-                                              Container(
-                                                height: getSize(
-                                                  29,
-                                                ),
-                                                width: getSize(
-                                                  29,
-                                                ),
-                                                margin: getMargin(
-                                                  bottom: 2,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  color:
-                                                      ColorConstant.blueGray700,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    getHorizontalSize(
-                                                      6,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: getPadding(
-                                                  left: 13,
-                                                  bottom: 2,
-                                                ),
-                                                child: Text(
-                                                  "lbl_walker".tr,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  textAlign: TextAlign.left,
-                                                  style: AppStyle
-                                                      .txtRobotoRomanRegular24,
-                                                ),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  controller.setWalker();
+                                                },
+                                                child: Obx(() => Row(
+                                                      children: [
+                                                        Container(
+                                                          height: getSize(
+                                                            29,
+                                                          ),
+                                                          width: getSize(
+                                                            29,
+                                                          ),
+                                                          margin: getMargin(
+                                                            bottom: 2,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: controller
+                                                                        .roleStatus
+                                                                        .value ==
+                                                                    'Walker'
+                                                                ? ColorConstant
+                                                                    .blueGray700
+                                                                : null,
+                                                            border: controller
+                                                                        .roleStatus
+                                                                        .value !=
+                                                                    'Walker'
+                                                                ? Border.all(
+                                                                    color: ColorConstant
+                                                                        .blueGray700,
+                                                                    width:
+                                                                        getHorizontalSize(
+                                                                      1,
+                                                                    ),
+                                                                  )
+                                                                : null,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                              getHorizontalSize(
+                                                                6,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding: getPadding(
+                                                            left: 13,
+                                                            bottom: 2,
+                                                          ),
+                                                          child: Text(
+                                                            "lbl_walker".tr,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            textAlign:
+                                                                TextAlign.left,
+                                                            style: AppStyle
+                                                                .txtRobotoRomanRegular24,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )),
                                               ),
                                               Spacer(),
-                                              Container(
-                                                height: getSize(
-                                                  29,
-                                                ),
-                                                width: getSize(
-                                                  29,
-                                                ),
-                                                margin: getMargin(
-                                                  bottom: 2,
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    getHorizontalSize(
-                                                      6,
-                                                    ),
-                                                  ),
-                                                  border: Border.all(
-                                                    color: ColorConstant
-                                                        .blueGray700,
-                                                    width: getHorizontalSize(
-                                                      1,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: getPadding(
-                                                  left: 13,
-                                                  top: 2,
-                                                ),
-                                                child: Text(
-                                                  "lbl_dog_owner".tr,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  textAlign: TextAlign.left,
-                                                  style: AppStyle
-                                                      .txtRobotoRomanRegular24,
-                                                ),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  controller.setWalker();
+                                                },
+                                                child: Obx(() => Row(
+                                                      children: [
+                                                        Container(
+                                                          height: getSize(
+                                                            29,
+                                                          ),
+                                                          width: getSize(
+                                                            29,
+                                                          ),
+                                                          margin: getMargin(
+                                                            bottom: 2,
+                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: controller
+                                                                        .roleStatus
+                                                                        .value ==
+                                                                    'Dog Owner'
+                                                                ? ColorConstant
+                                                                    .blueGray700
+                                                                : null,
+                                                            border: controller
+                                                                        .roleStatus
+                                                                        .value !=
+                                                                    'Dog Owner'
+                                                                ? Border.all(
+                                                                    color: ColorConstant
+                                                                        .blueGray700,
+                                                                    width:
+                                                                        getHorizontalSize(
+                                                                      1,
+                                                                    ),
+                                                                  )
+                                                                : null,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                              getHorizontalSize(
+                                                                6,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding: getPadding(
+                                                            left: 13,
+                                                            bottom: 2,
+                                                          ),
+                                                          child: Text(
+                                                            "lbl_dog_owner".tr,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            textAlign:
+                                                                TextAlign.left,
+                                                            style: AppStyle
+                                                                .txtRobotoRomanRegular24,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )),
                                               ),
                                             ],
                                           ),
@@ -225,14 +282,14 @@ class LoginScreen extends GetWidget<LoginController> {
                           child: RichText(
                             text: TextSpan(
                               style: AppStyle.txtRobotoRomanRegular24.copyWith(
-                                   decoration: TextDecoration.underline,
+                                decoration: TextDecoration.underline,
                               ),
                               children: <TextSpan>[
                                 TextSpan(
                                     text: "msg_don_t_you_have_an".tr,
                                     recognizer: TapGestureRecognizer()
-                                      ..onTap = () => Get.toNamed(AppRoutes.registerScreen)
-                                ),
+                                      ..onTap = () => Get.toNamed(
+                                          AppRoutes.registerScreen)),
                               ],
                             ),
                           ),

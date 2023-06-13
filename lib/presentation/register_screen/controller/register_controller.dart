@@ -13,9 +13,19 @@ class RegisterController extends GetxController {
 
   Rx<RegisterModel> registerModelObj = RegisterModel().obs;
 
+  var roleStatus = ''.obs;
+
   @override
   void onReady() {
     super.onReady();
+  }
+
+  void setWalker() {
+    roleStatus.value = roleStatus.value == 'Walker' ? 'Dog Owner' : 'Walker';
+  }
+
+  void setDogOwner() {
+    roleStatus.value = roleStatus.value == 'Dog Owner' ? 'Walker' : 'Dog Owner';
   }
 
   @override
