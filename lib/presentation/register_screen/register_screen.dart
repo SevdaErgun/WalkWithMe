@@ -19,282 +19,289 @@ class RegisterScreen extends GetWidget<RegisterController> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: ColorConstant.gray200,
+        backgroundColor: ColorConstant.projectBackground,
         body: Form(
           key: _formKey,
           child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+            width: double.infinity,
+            child: Stack(
               children: [
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Container(
-                      width: double.infinity,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          CustomImageView(
-                            imagePath: ImageConstant.registerIMG,
-                            width: MediaQuery.sizeOf(context).width * 6 / 10,
-                            margin: EdgeInsets.only(top: 25),
-                          ),
-                          CustomTextFormField(
-                            focusNode: FocusNode(),
-                            autofocus: false,
-                            controller: controller.nameController,
-                            hintText: "lbl_name".tr,
-                            margin: getMargin(
-                                left: MediaQuery.sizeOf(context).width * 1 / 10,
-                                right:
-                                    MediaQuery.sizeOf(context).width * 1 / 10),
-                            validator: (value) {
-                              if (!isText(value)) {
-                                return "Please enter valid text";
-                              }
-                              return null;
-                            },
-                          ),
-                          CustomTextFormField(
-                            focusNode: FocusNode(),
-                            autofocus: false,
-                            controller: controller.surnameController,
-                            hintText: "lbl_surname".tr,
-                            margin: getMargin(
-                                left: MediaQuery.sizeOf(context).width * 1 / 10,
-                                top: 33,
-                                right:
-                                    MediaQuery.sizeOf(context).width * 1 / 10),
-                            validator: (value) {
-                              if (!isText(value)) {
-                                return "Please enter valid text";
-                              }
-                              return null;
-                            },
-                          ),
-                          CustomTextFormField(
-                            focusNode: FocusNode(),
-                            autofocus: false,
-                            controller: controller.emailController,
-                            hintText: "lbl_email".tr,
-                            margin: getMargin(
-                                left: MediaQuery.sizeOf(context).width * 1 / 10,
-                                top: 33,
-                                right:
-                                    MediaQuery.sizeOf(context).width * 1 / 10),
-                            textInputType: TextInputType.emailAddress,
-                            validator: (value) {
-                              if (value == null ||
-                                  (!isValidEmail(value, isRequired: true))) {
-                                return "Please enter valid email";
-                              }
-                              return null;
-                            },
-                          ),
-                          CustomTextFormField(
-                            focusNode: FocusNode(),
-                            autofocus: false,
-                            controller: controller.passwordController,
-                            hintText: "lbl_password".tr,
-                            margin: getMargin(
-                                left: MediaQuery.sizeOf(context).width * 1 / 10,
-                                top: 33,
-                                right:
-                                    MediaQuery.sizeOf(context).width * 1 / 10),
-                            textInputAction: TextInputAction.done,
-                            textInputType: TextInputType.visiblePassword,
-                            validator: (value) {
-                              if (value == null ||
-                                  (!isValidPassword(value, isRequired: true))) {
-                                return "Please enter valid password";
-                              }
-                              return null;
-                            },
-                            isObscureText: true,
-                          ),
-                          CustomButton(
-                            height: getVerticalSize(
-                              65,
-                            ),
-                            text: "lbl_register_as_a".tr,
-                            margin: getMargin(
-                                left: MediaQuery.sizeOf(context).width * 1 / 10,
-                                top: 30,
-                                right:
-                                    MediaQuery.sizeOf(context).width * 1 / 10),
-                            shape: ButtonShape.RoundedBorder13,
-                            padding: ButtonPadding.PaddingAll19,
-                            fontStyle: ButtonFontStyle.RobotoRomanBold32,
-                            onTap: () => {
-                              _insert()
-                            },
-                          ),
-                          Padding(
-                            padding: getPadding(
-                              left: MediaQuery.sizeOf(context).width * 1 / 10,
-                              top: 30,
-                              right: MediaQuery.sizeOf(context).width * 1 / 10,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    controller.setWalker();
-                                  },
-                                  child: Obx(() => Row(
-                                        children: [
-                                          Container(
-                                            height: getSize(
-                                              29,
-                                            ),
-                                            width: getSize(
-                                              29,
-                                            ),
-                                            margin: getMargin(
-                                              bottom: 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: controller
-                                                          .roleStatus.value ==
-                                                      'Walker'
-                                                  ? ColorConstant.blueGray700
-                                                  : null,
-                                              border: controller
-                                                          .roleStatus.value !=
-                                                      'Walker'
-                                                  ? Border.all(
-                                                      color: ColorConstant
-                                                          .blueGray700,
-                                                      width: getHorizontalSize(
-                                                        1,
-                                                      ),
-                                                    )
-                                                  : null,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                getHorizontalSize(
-                                                  6,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: getPadding(
-                                              left: 13,
-                                              bottom: 2,
-                                            ),
-                                            child: Text(
-                                              "lbl_walker".tr,
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.left,
-                                              style: AppStyle
-                                                  .txtRobotoRomanRegular24,
-                                            ),
-                                          ),
-                                        ],
-                                      )),
-                                ),
-                                Spacer(),
-                                GestureDetector(
-                                  onTap: () {
-                                    controller.setWalker();
-                                  },
-                                  child: Obx(() => Row(
-                                        children: [
-                                          Container(
-                                            height: getSize(
-                                              29,
-                                            ),
-                                            width: getSize(
-                                              29,
-                                            ),
-                                            margin: getMargin(
-                                              bottom: 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: controller
-                                                          .roleStatus.value ==
-                                                      'Dog Owner'
-                                                  ? ColorConstant.blueGray700
-                                                  : null,
-                                              border: controller
-                                                          .roleStatus.value !=
-                                                      'Dog Owner'
-                                                  ? Border.all(
-                                                      color: ColorConstant
-                                                          .blueGray700,
-                                                      width: getHorizontalSize(
-                                                        1,
-                                                      ),
-                                                    )
-                                                  : null,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                getHorizontalSize(
-                                                  6,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: getPadding(
-                                              left: 13,
-                                              bottom: 2,
-                                            ),
-                                            child: Text(
-                                              "lbl_dog_owner".tr,
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.left,
-                                              style: AppStyle
-                                                  .txtRobotoRomanRegular24,
-                                            ),
-                                          ),
-                                        ],
-                                      )),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Padding(
-                              padding: getPadding(
-                                top: 20,
+                Positioned.fill(
+                  child: CustomImageView(
+                    imagePath: ImageConstant.loginIMG,
+                    width: double.infinity,
+                    alignment: Alignment.topCenter,
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.sizeOf(context).height * 0.5 / 10),
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.sizeOf(context).height * 0.5 / 10),
+                  margin: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.sizeOf(context).width * 0.5 / 10,
+                  ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: ColorConstant.cardBackground,
+                            borderRadius: BorderRadius.circular(18),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.8),
+                                spreadRadius: 0,
+                                blurRadius: 5,
+                                offset: Offset(0, 8),
                               ),
-
-                              // child: Text(
-                              //   "msg_return_to_login".tr,
-                              //   overflow: TextOverflow.ellipsis,
-                              //   textAlign: TextAlign.left,
-                              //   style: AppStyle.txtRobotoRomanRegular24,
-                              // ),
-                            
-                          
-
-                              child:  RichText(
-
-                                text: TextSpan(
-                                  style:
-                                      AppStyle.txtRobotoRomanRegular24.copyWith(
-                                    decoration: TextDecoration.underline,
-                                  ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                        text: "msg_return_to_login".tr,
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap = () => Get.toNamed(
-                                              AppRoutes.loginScreen)),
+                            ],
+                          ),
+                          padding: EdgeInsets.symmetric(
+                              horizontal:
+                                  MediaQuery.sizeOf(context).width * 0.5 / 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(vertical: 24),
+                                child: Text(
+                                  "lbl_walkwithme".tr,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
+                                  style: AppStyle.txtDancingScript32,
+                                ),
+                              ),
+                              CustomTextFormField(
+                                focusNode: FocusNode(),
+                                autofocus: false,
+                                controller: controller.nameController,
+                                hintText: "lbl_name".tr,
+                                validator: (value) {
+                                  if (!isText(value)) {
+                                    return "Please enter valid text";
+                                  }
+                                  return null;
+                                },
+                              ),
+                              CustomTextFormField(
+                                focusNode: FocusNode(),
+                                autofocus: false,
+                                controller: controller.surnameController,
+                                hintText: "lbl_surname".tr,
+                                margin: getMargin(
+                                  top: 24,
+                                ),
+                                validator: (value) {
+                                  if (!isText(value)) {
+                                    return "Please enter valid text";
+                                  }
+                                  return null;
+                                },
+                              ),
+                              CustomTextFormField(
+                                focusNode: FocusNode(),
+                                autofocus: false,
+                                controller: controller.emailController,
+                                hintText: "lbl_email".tr,
+                                margin: getMargin(
+                                  top: 24,
+                                ),
+                                textInputType: TextInputType.emailAddress,
+                                validator: (value) {
+                                  if (value == null ||
+                                      (!isValidEmail(value,
+                                          isRequired: true))) {
+                                    return "Please enter valid email";
+                                  }
+                                  return null;
+                                },
+                              ),
+                              CustomTextFormField(
+                                focusNode: FocusNode(),
+                                autofocus: false,
+                                controller: controller.passwordController,
+                                hintText: "lbl_password".tr,
+                                margin: getMargin(
+                                  top: 24,
+                                ),
+                                textInputAction: TextInputAction.done,
+                                textInputType: TextInputType.visiblePassword,
+                                validator: (value) {
+                                  if (value == null ||
+                                      (!isValidPassword(value,
+                                          isRequired: true))) {
+                                    return "Please enter valid password";
+                                  }
+                                  return null;
+                                },
+                                isObscureText: true,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(vertical: 24),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        controller.setWalker();
+                                      },
+                                      child: Obx(() => Row(
+                                            children: [
+                                              Container(
+                                                height: getSize(
+                                                  29,
+                                                ),
+                                                width: getSize(
+                                                  29,
+                                                ),
+                                                margin: getMargin(
+                                                  bottom: 2,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  color: controller.roleStatus
+                                                              .value ==
+                                                          'Walker'
+                                                      ? ColorConstant
+                                                          .blueGray700
+                                                      : null,
+                                                  border: controller.roleStatus
+                                                              .value !=
+                                                          'Walker'
+                                                      ? Border.all(
+                                                          color: ColorConstant
+                                                              .blueGray700,
+                                                          width:
+                                                              getHorizontalSize(
+                                                            1,
+                                                          ),
+                                                        )
+                                                      : null,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    getHorizontalSize(
+                                                      6,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: getPadding(
+                                                  left: 13,
+                                                  bottom: 2,
+                                                ),
+                                                child: Text(
+                                                  "lbl_walker".tr,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  textAlign: TextAlign.left,
+                                                  style: AppStyle
+                                                      .txtRobotoRomanRegular24,
+                                                ),
+                                              ),
+                                            ],
+                                          )),
+                                    ),
+                                    Spacer(),
+                                    GestureDetector(
+                                      onTap: () {
+                                        controller.setDogOwner();
+                                      },
+                                      child: Obx(() => Row(
+                                            children: [
+                                              Container(
+                                                height: getSize(
+                                                  29,
+                                                ),
+                                                width: getSize(
+                                                  29,
+                                                ),
+                                                margin: getMargin(
+                                                  bottom: 2,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  color: controller.roleStatus
+                                                              .value ==
+                                                          'Dog Owner'
+                                                      ? ColorConstant
+                                                          .blueGray700
+                                                      : null,
+                                                  border: controller.roleStatus
+                                                              .value !=
+                                                          'Dog Owner'
+                                                      ? Border.all(
+                                                          color: ColorConstant
+                                                              .blueGray700,
+                                                          width:
+                                                              getHorizontalSize(
+                                                            1,
+                                                          ),
+                                                        )
+                                                      : null,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    getHorizontalSize(
+                                                      6,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: getPadding(
+                                                  left: 13,
+                                                  bottom: 2,
+                                                ),
+                                                child: Text(
+                                                  "lbl_dog_owner".tr,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  textAlign: TextAlign.left,
+                                                  style: AppStyle
+                                                      .txtRobotoRomanRegular24,
+                                                ),
+                                              ),
+                                            ],
+                                          )),
+                                    ),
                                   ],
                                 ),
                               ),
-                            ),
+                              CustomButton(
+                                height: getVerticalSize(
+                                  65,
+                                ),
+                                text: "lbl_register_as_a".tr,
+                                shape: ButtonShape.RoundedBorder13,
+                                padding: ButtonPadding.PaddingAll19,
+                                fontStyle: ButtonFontStyle.RobotoRomanBold32,
+                                onTap: () => {_insert()},
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(vertical: 24),
+                                child: RichText(
+                                  text: TextSpan(
+                                    style: AppStyle.txtRobotoRomanRegular24
+                                        .copyWith(
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                          text: "msg_return_to_login".tr,
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () => Get.toNamed(
+                                                AppRoutes.loginScreen)),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                        )
+                      ]),
+                )
               ],
             ),
           ),
@@ -341,4 +348,3 @@ class RegisterScreen extends GetWidget<RegisterController> {
     debugPrint('deleted $rowsDeleted row(s): row $id');
   }
 }
-
