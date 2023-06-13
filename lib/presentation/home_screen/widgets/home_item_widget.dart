@@ -16,14 +16,14 @@ class HomeItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorConstant.cardBackground,
         borderRadius: BorderRadius.all(Radius.circular(13)),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.7),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
+            color: Colors.grey.withOpacity(0.8),
+            spreadRadius: 0,
+            blurRadius: 5,
+            offset: Offset(0, 8),
           ),
         ],
       ),
@@ -56,10 +56,10 @@ class HomeItemWidget extends StatelessWidget {
                     CustomImageView(
                       imagePath: ImageConstant.imgUser91,
                       height: getSize(
-                        45,
+                        35,
                       ),
                       width: getSize(
-                        45,
+                        35,
                       ),
                     ),
                     Padding(
@@ -72,7 +72,7 @@ class HomeItemWidget extends StatelessWidget {
                         "lbl_name_surname".tr,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.left,
-                        style: AppStyle.txtRobotoRomanRegular24Black900,
+                        style: AppStyle.txtRobotoRomanRegular14Black900,
                       ),
                     ),
                     Container(
@@ -99,7 +99,7 @@ class HomeItemWidget extends StatelessWidget {
                           "lbl_1_hour_ago".tr,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
-                          style: AppStyle.txtRobotoRomanRegular20Red400,
+                          style: AppStyle.txtRobotoRomanRegular18Red400,
                         ),
                       ),
                     ),
@@ -126,12 +126,15 @@ class HomeItemWidget extends StatelessWidget {
                           onPressed: () {},
                           child: const Text('Confirm'),
                           style: ButtonStyle(
+                              elevation: MaterialStateProperty.all(0),
+                              backgroundColor: MaterialStateProperty.all(
+                                  ColorConstant.blue30001),
                               shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                8.0), /*side: BorderSide(color: Colors.red)*/
-                          )))),
+                                borderRadius: BorderRadius.circular(
+                                    8.0), /*side: BorderSide(color: Colors.red)*/
+                              )))),
                     ),
                     Padding(
                       padding: getPadding(left: 24, right: 24),

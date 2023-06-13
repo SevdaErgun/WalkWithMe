@@ -91,7 +91,7 @@ class AddScheduleForWalkersScreen
                                 ),
                                 colors: [
                                   ColorConstant.deepOrangeA400,
-                                  ColorConstant.orange300,
+                                  ColorConstant.navigationBar,
                                 ],
                               ),
                             ),
