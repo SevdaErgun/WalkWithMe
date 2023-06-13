@@ -307,11 +307,11 @@ class LoginScreen extends GetWidget<LoginController> {
   }
 
   void login() async {
-  var row = await customerDatabase.getById(controller.emailController.text,controller.passwordController.text, "Walker");
-  if(row.isNotEmpty )
-    Get.toNamed(AppRoutes.profileScreen);
-  else
-   print( "Wrong password or email.");
+    var row = await customerDatabase.getById(controller.emailController.text,
+        controller.passwordController.text, "Walker");
+    if (row.isNotEmpty)
+      Get.toNamed(AppRoutes.profileScreen);
+    else
+      print("Wrong password or email.");
   }
-
 }
