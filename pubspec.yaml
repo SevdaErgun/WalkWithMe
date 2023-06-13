@@ -32,3 +32,6 @@ flutter:
           weight: 400
         - asset: assets/fonts/RobotoRomanBold.ttf
           weight: 700
+    - family: Dancing Script
+      fonts: 
+        - asset: assets/fonts/DancingScriptBold.ttf
