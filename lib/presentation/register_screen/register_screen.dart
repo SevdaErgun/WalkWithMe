@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
-
+import 'package:walkwithme/services/db/customer/customer_database.dart';
+import 'package:walkwithme/services/db/customer/customer_database.dart';
+import '../../services/db/database_helper.dart';
 import 'controller/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
@@ -7,8 +9,9 @@ import 'package:walkwithme/core/utils/validation_functions.dart';
 import 'package:walkwithme/widgets/custom_button.dart';
 import 'package:walkwithme/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
 class RegisterScreen extends GetWidget<RegisterController> {
+  final customerDatabase = CustomerDatabase();
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -122,6 +125,9 @@ class RegisterScreen extends GetWidget<RegisterController> {
                             shape: ButtonShape.RoundedBorder13,
                             padding: ButtonPadding.PaddingAll19,
                             fontStyle: ButtonFontStyle.RobotoRomanBold32,
+                            onTap: () => {
+                              _insert()
+                            },
                           ),
                           Padding(
                             padding: getPadding(
@@ -208,12 +214,6 @@ class RegisterScreen extends GetWidget<RegisterController> {
                               padding: getPadding(
                                 top: 20,
                               ),
-                              // child: Text(
-                              //   "msg_return_to_login".tr,
-                              //   overflow: TextOverflow.ellipsis,
-                              //   textAlign: TextAlign.left,
-                              //   style: AppStyle.txtRobotoRomanRegular24,
-                              // ),
                               child:  RichText(
                                 text: TextSpan(
                                   style: AppStyle.txtRobotoRomanRegular24.copyWith(
@@ -242,4 +242,43 @@ class RegisterScreen extends GetWidget<RegisterController> {
       ),
     );
   }
+
+  void _insert() async {
+    // row to insert
+    Map<String, dynamic> row = {
+      CustomerDatabase.columnName: controller.nameController.text,
+      CustomerDatabase.columnSurname: controller.surnameController.text,
+      CustomerDatabase.columnEmail: controller.emailController.text,
+      CustomerDatabase.columnPassword: controller.passwordController.text,
+      CustomerDatabase.columnRole: "Walker",
+    };
+    final id = await customerDatabase.insert(row);
+    Get.toNamed(AppRoutes.loginScreen);
+  }
+
+  void _query() async {
+    final allRows = await customerDatabase.queryAllRows();
+    debugPrint('query all rows:');
+    for (final row in allRows) {
+      debugPrint(row.toString());
+    }
+  }
+
+  void _update() async {
+    // row to update
+    Map<String, dynamic> row = {
+      CustomerDatabase.columnId: 1,
+      CustomerDatabase.columnName: 'Mary',
+    };
+    final rowsAffected = await customerDatabase.update(row);
+    debugPrint('updated $rowsAffected row(s)');
+  }
+
+  void _delete() async {
+    // Assuming that the number of rows is the id for the last row.
+    final id = await customerDatabase.queryRowCount();
+    final rowsDeleted = await customerDatabase.delete(id);
+    debugPrint('deleted $rowsDeleted row(s): row $id');
+  }
 }
+

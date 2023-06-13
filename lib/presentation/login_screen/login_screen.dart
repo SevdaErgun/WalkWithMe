@@ -1,4 +1,5 @@
 import 'package:flutter/gestures.dart';
+import 'package:walkwithme/services/db/customer/customer_database.dart';
 
 import 'controller/login_controller.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,8 @@ import 'package:walkwithme/widgets/custom_text_form_field.dart';
 
 // ignore_for_file: must_be_immutable
 class LoginScreen extends GetWidget<LoginController> {
+  final customerDatabase = CustomerDatabase();
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -107,10 +110,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                         ),
                                         CustomButton(
                                           onTap: () {
-                                            /*Get.toNamed(
-                                                AppRoutes.registerScreen);*/
-                                            Get.toNamed(
-                                                AppRoutes.profileScreen);
+                                            login();
                                           },
                                           height: getVerticalSize(
                                             65,
@@ -222,14 +222,6 @@ class LoginScreen extends GetWidget<LoginController> {
                           ),
                         ),
                         Container(
-                          // child: Text(
-                          //   "msg_don_t_you_have_an".tr,
-                          //   overflow: TextOverflow.ellipsis,
-                          //   textAlign: TextAlign.left,
-                          //   style: AppStyle.txtRobotoRomanRegular24.copyWith(
-                          //     decoration: TextDecoration.underline,
-                          //   ),
-                          // ),
                           child: RichText(
                             text: TextSpan(
                               style: AppStyle.txtRobotoRomanRegular24.copyWith(
@@ -256,4 +248,13 @@ class LoginScreen extends GetWidget<LoginController> {
       ),
     );
   }
+
+  void login() async {
+  var row = await customerDatabase.getById(controller.emailController.text,controller.passwordController.text, "Walker");
+  if(row.isNotEmpty )
+    Get.toNamed(AppRoutes.profileScreen);
+  else
+   print( "Wrong password or email.");
+  }
+
 }
