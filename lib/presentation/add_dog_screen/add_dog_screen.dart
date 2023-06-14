@@ -7,6 +7,7 @@ import 'package:walkwithme/widgets/app_bar/appbar_subtitle_1.dart';
 import 'package:walkwithme/widgets/app_bar/appbar_subtitle_2.dart';
 import 'package:walkwithme/widgets/app_bar/appbar_title.dart';
 import 'package:walkwithme/widgets/app_bar/custom_app_bar.dart';
+import 'package:walkwithme/globals.dart' as globals;
 
 // ignore_for_file: must_be_immutable
 class AddDogScreen extends GetWidget<AddDogController> {
@@ -46,10 +47,15 @@ class AddDogScreen extends GetWidget<AddDogController> {
             ),
             Container(
               margin: getMargin(right: 26),
-              child: Icon(
-                Icons.cancel_outlined,
-                color: ColorConstant.blackText,
-                size: 32,
+              child: GestureDetector(
+                onTap: () => {
+                Get.toNamed(AppRoutes.dogsScreen)
+                },
+                child: Icon(
+                  Icons.cancel_outlined,
+                  color: ColorConstant.blackText,
+                  size: 32,
+                ),
               ),
             ),
           ],
@@ -189,6 +195,7 @@ class AddDogScreen extends GetWidget<AddDogController> {
       DogDatabase.columnName: controller.dogNameController.text,
       DogDatabase.columnGender: controller.dogGenderController.text,
       DogDatabase.columnBreed: controller.dogBreedController.text,
+      DogDatabase.columnOwner: globals.user[0].values.toList()[0],
     };
     final id = await dogDatabase.insert(row);
 
