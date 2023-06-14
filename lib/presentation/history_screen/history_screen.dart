@@ -21,9 +21,9 @@ class HistoryScreen extends GetWidget<HistoryController> {
         appBar: CustomAppBar(
           height: 70,
           title: AppbarTitle(
-            text: "lbl_walkwithme2".tr,
+            text: "walkwithme".tr,
             margin: getMargin(
-              left: 30,
+              left: 26,
             ),
           ),
           actions: [

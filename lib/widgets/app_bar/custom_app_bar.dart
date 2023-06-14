@@ -56,7 +56,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           height: 80,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: ColorConstant.gray200,
+            color: ColorConstant.projectBackground,
             boxShadow: [
               BoxShadow(
                 color: ColorConstant.black9003f,

@@ -17,7 +17,7 @@ class DogsScreen extends GetWidget<DogsController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorConstant.gray200,
+        backgroundColor: ColorConstant.projectBackground,
         bottomNavigationBar: CustomBottomBar(
           onChanged: (BottomBarEnum type) {
             Get.toNamed(getCurrentRoute(type), id: 1);
@@ -25,12 +25,12 @@ class DogsScreen extends GetWidget<DogsController> {
         ),
         appBar: CustomAppBar(
           height: getVerticalSize(
-            95,
+            70,
           ),
           title: AppbarTitle(
-            text: "lbl_walkwithme2".tr,
+            text: "walkwithme".tr,
             margin: getMargin(
-              left: 40,
+              left: 26,
             ),
           ),
           actions: [
@@ -50,10 +50,8 @@ class DogsScreen extends GetWidget<DogsController> {
           styleType: Style.bgShadowBlack9003f,
         ),
         body: Container(
-            alignment: Alignment.center,
-            padding: getPadding(
-              top: 55,
-            ),
+            padding: getPadding(top: 45),
+            alignment: Alignment.topCenter,
             child: Container(
               width: MediaQuery.sizeOf(context).width * 9 / 10,
               child: Obx(
@@ -66,7 +64,7 @@ class DogsScreen extends GetWidget<DogsController> {
                   ) {
                     return SizedBox(
                       height: getVerticalSize(
-                        76,
+                        35,
                       ),
                     );
                   },

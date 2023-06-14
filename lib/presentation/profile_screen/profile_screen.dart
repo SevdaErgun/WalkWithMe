@@ -16,31 +16,26 @@ class ProfileScreen extends GetWidget<ProfileController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorConstant.gray200,
+        backgroundColor: ColorConstant.projectBackground,
         appBar: CustomAppBar(
           height: 70,
           title: AppbarTitle(
-            text: "lbl_walkwithme2".tr,
+            text: "walkwithme".tr,
             margin: getMargin(
-              left: 30,
+              left: 26,
             ),
           ),
           actions: [
-            Container(
-              alignment: Alignment.center,
-              padding: getPadding(
-                left: 25,
-                right: 25,
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  Get.toNamed(AppRoutes.updateProfileScreen, arguments: {'row' : row});
-                },
-                child: Text(
-                  "lbl_update_info".tr,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.left,
-                  style: AppStyle.txtRobotoRomanRegular24Bluegray700,
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoutes.updateProfileScreen);
+              },
+              child: Container(
+                margin: getMargin(right: 26),
+                child: Icon(
+                  Icons.cancel_outlined,
+                  color: ColorConstant.blackText,
+                  size: 32,
                 ),
               ),
             ),
@@ -80,7 +75,8 @@ class ProfileScreen extends GetWidget<ProfileController> {
                             alignment: Alignment.center,
                             child: Container(
                               child: Text(
-                                row[0].values.toList()[2]+ row[0].values.toList()[3],
+                                row[0].values.toList()[2] +
+                                    row[0].values.toList()[3],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular32,

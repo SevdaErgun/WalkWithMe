@@ -17,9 +17,9 @@ class HomeScreen extends GetWidget<HomeController> {
         appBar: CustomAppBar(
           height: 70,
           title: AppbarTitle(
-            text: "lbl_walkwithme2".tr,
+            text: "walkwithme".tr,
             margin: getMargin(
-              left: 30,
+              left: 26,
             ),
           ),
           actions: [
@@ -37,7 +37,7 @@ class HomeScreen extends GetWidget<HomeController> {
               width: 20,
             ),
             Container(
-              margin: EdgeInsets.only(right: 25),
+              margin: EdgeInsets.only(right: 26),
               child: Icon(
                 Icons.notifications_outlined,
                 color: Colors.black,

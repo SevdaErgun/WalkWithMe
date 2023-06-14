@@ -1,4 +1,3 @@
-import '../../services/db/dog/dog_database.dart';
 import '../../widgets/custom_text_form_field.dart';
 import 'controller/add_dog_controller.dart';
 import 'package:flutter/material.dart';
@@ -17,37 +16,39 @@ class AddDogScreen extends GetWidget<AddDogController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorConstant.gray200,
+        backgroundColor: ColorConstant.projectBackground,
         appBar: CustomAppBar(
           height: getVerticalSize(
-            95,
+            70,
           ),
           title: AppbarTitle(
-            text: "lbl_walkwithme2".tr,
+            text: "walkwithme".tr,
             margin: getMargin(
-              left: 40,
+              left: 26,
             ),
           ),
           actions: [
-            AppbarSubtitle2(
-              onTap: () => {
-                _insert()
-              },
-              text: "lbl_confirm".tr,
-              margin: getMargin(
-                top: 35,
-                right: 15,
+            Container(
+              child: GestureDetector(
+                onTap: () => {
+                  _insert()
+                },
+                child: Icon(
+                  Icons.verified,
+                  color: Colors.green.shade400,
+                  size: 32,
+                ),
               ),
             ),
-            AppbarSubtitle1(
-              onTap: () =>{
-              Get.toNamed(AppRoutes.dogsScreen)
-              },
-              text: "lbl_cancel".tr,
-              margin: getMargin(
-                left: 10,
-                top: 35,
-                right: 30,
+            SizedBox(
+              width: 15,
+            ),
+            Container(
+              margin: getMargin(right: 26),
+              child: Icon(
+                Icons.cancel_outlined,
+                color: ColorConstant.blackText,
+                size: 32,
               ),
             ),
           ],
