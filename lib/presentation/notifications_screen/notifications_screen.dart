@@ -675,12 +675,12 @@ class NotificationsScreen extends GetWidget<NotificationsController> {
   ///Handling route based on bottom click actions
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
-      case BottomBarEnum.Home11:
+      case BottomBarEnum.Home:
         return AppRoutes.homeScreen;
-      case BottomBarEnum.Plus51:
-        return "/";
-      case BottomBarEnum.User81:
-        return "/";
+      case BottomBarEnum.Plus:
+        return AppRoutes.addScheduleForWalkersScreen;
+      case BottomBarEnum.Profile:
+        return AppRoutes.profileScreen;
       default:
         return "/";
     }

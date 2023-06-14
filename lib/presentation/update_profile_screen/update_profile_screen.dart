@@ -12,9 +12,7 @@ import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 import 'package:walkwithme/widgets/custom_button.dart';
 import 'package:walkwithme/widgets/custom_text_form_field.dart';
 
-
-class UpdateProfileScreen extends GetWidget<UpdateProfileController>{
-
+class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final List<Map<String, dynamic>> row = Get.arguments['row'];
@@ -48,7 +46,7 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController>{
               margin: getMargin(right: 26),
               child: GestureDetector(
                 onTap: () => {
-                  Get.toNamed(AppRoutes.profileScreen, arguments: {'row' : row})
+                  Get.toNamed(AppRoutes.profileScreen, arguments: {'row': row})
                 },
                 child: Icon(
                   Icons.cancel_outlined,
@@ -161,11 +159,11 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController>{
   ///Handling route based on bottom click actions
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
-      case BottomBarEnum.Home11:
+      case BottomBarEnum.Home:
         return AppRoutes.homeScreen;
-      case BottomBarEnum.Plus51:
+      case BottomBarEnum.Plus:
         return "/";
-      case BottomBarEnum.User81:
+      case BottomBarEnum.Profile:
         return "/";
       default:
         return "/";
