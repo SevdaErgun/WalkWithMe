@@ -28,9 +28,9 @@ class DogsScreen extends GetWidget<DogsController> {
             70,
           ),
           title: AppbarTitle(
-            text: "lbl_walkwithme2".tr,
+            text: "walkwithme".tr,
             margin: getMargin(
-              left: 40,
+              left: 26,
             ),
           ),
           actions: [

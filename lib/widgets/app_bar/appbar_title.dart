@@ -22,16 +22,24 @@ class AppbarTitle extends StatelessWidget {
         onTap?.call();
       },
       child: Padding(
-        padding: margin ?? EdgeInsets.zero,
-        child: Text(
-          text,
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.left,
-          style: AppStyle.txtRobotoRomanBlack32.copyWith(
-            color: ColorConstant.gray70001,
-          ),
-        ),
-      ),
+          padding: margin ?? EdgeInsets.zero,
+          child: Row(children: [
+            Image.asset(
+              ImageConstant.imgProjectLogo,
+              width: 35,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              text,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.left,
+              style: AppStyle.txtDancingScript.copyWith(
+                color: ColorConstant.blackText,
+              ),
+            ),
+          ])),
     );
   }
 }
