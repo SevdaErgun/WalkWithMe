@@ -43,49 +43,48 @@ class DogsScreen extends GetWidget<DogsController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorConstant.projectBackground,
-        bottomNavigationBar: CustomBottomBar(
-            onChanged: (BottomBarEnum type) {
-              Get.toNamed(getCurrentRoute(type));
-            },
-            roleStatus: 'Dog Owner'),
-        appBar: CustomAppBar(
-          height: getVerticalSize(
-            70,
-          ),
-          title: AppbarTitle(
-            text: "walkwithme".tr,
-            margin: getMargin(
-              left: 26,
+          backgroundColor: ColorConstant.projectBackground,
+          bottomNavigationBar: CustomBottomBar(
+              onChanged: (BottomBarEnum type) {
+                Get.toNamed(getCurrentRoute(type));
+              },
+              roleStatus: 'Dog Owner'),
+          appBar: CustomAppBar(
+            height: getVerticalSize(
+              70,
             ),
+            title: AppbarTitle(
+              text: "walkwithme".tr,
+              margin: getMargin(
+                left: 26,
+              ),
+            ),
+            actions: [
+              Container(
+                margin: EdgeInsets.only(right: 30),
+                child: GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.addDogScreen);
+                    },
+                    child: Icon(
+                      Icons.add_box_outlined,
+                      size: 35,
+                      color: Colors.black,
+                    )),
+              )
+            ],
+            styleType: Style.bgShadowBlack9003f,
           ),
-          actions: [
-            Container(
-              margin: EdgeInsets.only(right: 30),
-              child: GestureDetector(
-                  onTap: () {
-                    Get.toNamed(AppRoutes.addDogScreen);
-                  },
-                  child: Icon(
-                    Icons.add_box_outlined,
-                    size: 35,
-                    color: Colors.black,
-                  )),
-            )
-          ],
-          styleType: Style.bgShadowBlack9003f,
-        ),
-        body: Container(
-          padding: getPadding(top: 45),
-          alignment: Alignment.topCenter,
-          child: Container(
-            width: MediaQuery.of(context).size.width * 9 / 10,
-            child: Obx(
-              () => FutureBuilder<List<Map<String, dynamic>>>(
+          body: Container(
+            padding: getPadding(top: 45),
+            alignment: Alignment.topCenter,
+            child: Container(
+              width: MediaQuery.of(context).size.width * 9 / 10,
+              child: FutureBuilder<List<Map<String, dynamic>>>(
                 future: dogList,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    List<Map<String, dynamic>> dogItems = snapshot.data!;
+                    List<Map<String, dynamic>> dogListData = snapshot.data!;
                     return ListView.separated(
                       physics: BouncingScrollPhysics(),
                       shrinkWrap: true,
@@ -94,10 +93,9 @@ class DogsScreen extends GetWidget<DogsController> {
                           height: getVerticalSize(35),
                         );
                       },
-                      itemCount: dogItems.length,
+                      itemCount: dogListData.length,
                       itemBuilder: (context, index) {
-                        Map<String, dynamic> model = dogItems[index];
-                        return DogsItemWidget(model);
+                        return DogsItemWidget(dogListData[index]);
                       },
                     );
                   } else if (snapshot.hasError) {
@@ -108,9 +106,7 @@ class DogsScreen extends GetWidget<DogsController> {
                 },
               ),
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 
