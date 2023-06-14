@@ -10,6 +10,7 @@ class DogDatabase {
   static const columnName = 'name';
   static const columnGender = 'gender';
   static const columnBreed = 'breed';
+  static const columnOwner = 'owner';
 
 
   // Inserts a row in the database where each key in the Map is a column name
@@ -21,6 +22,10 @@ class DogDatabase {
 
   Future<List<Map<String, dynamic>>> getById(int id) async {
     return await DatabaseHelper.getDb().rawQuery("SELECT * FROM $table WHERE id = '$id'");
+  }
+
+  Future<List<Map<String, dynamic>>> getByOwner(String owner) async {
+    return await DatabaseHelper.getDb().rawQuery("SELECT * FROM $table WHERE owner = '$owner'");
   }
 
   // All of the rows are returned as a list of maps, where each map is

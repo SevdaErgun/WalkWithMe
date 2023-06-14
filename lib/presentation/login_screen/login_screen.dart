@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:walkwithme/services/db/customer/customer_database.dart';
-
+import 'package:walkwithme/globals.dart' as globals;
 import 'controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
@@ -157,10 +157,9 @@ class LoginScreen extends GetWidget<LoginController> {
 
   void login() async {
   var row = await customerDatabase.getById(controller.emailController.text,controller.passwordController.text);
+  globals.user = row;
   if(row.isNotEmpty ){
-    Get.toNamed(AppRoutes.homeScreen, arguments: {
-      'row' : row
-    });
+    Get.toNamed(AppRoutes.homeScreen);
   }
   else
    print( "Wrong password or email.");

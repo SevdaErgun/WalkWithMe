@@ -16,7 +16,7 @@ class DogsScreen extends GetWidget<DogsController> {
 
   DogDatabase dogDatabase = DogDatabase();
 
-   /** "dogDatabase.queryAllRows();" Kod ile tüm köpekler gelecek. Future<List<Map<String, dynamic>>> return type ı.
+   /** "dogDatabase.getByOwner(globals.user[0].values.toList()[5]);" Kod ile tüm köpekler gelecek. Future<List<Map<String, dynamic>>> return type ı.
   İçinden bulabilirsin.**/
 
   @override
