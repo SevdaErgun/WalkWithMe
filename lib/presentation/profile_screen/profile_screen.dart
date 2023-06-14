@@ -1,5 +1,5 @@
 import 'package:walkwithme/presentation/home_screen/home_screen.dart';
-
+import 'package:walkwithme/globals.dart' as globals;
 import 'controller/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
@@ -9,7 +9,6 @@ import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 
 // ignore_for_file: must_be_immutable
 class ProfileScreen extends GetWidget<ProfileController> {
-  final List<Map<String, dynamic>> row = Get.arguments['row'];
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
               child: Container(
                 margin: getMargin(right: 26),
                 child: Icon(
-                  Icons.cancel_outlined,
+                  Icons.edit_outlined,
                   color: ColorConstant.blackText,
                   size: 32,
                 ),
@@ -74,8 +73,8 @@ class ProfileScreen extends GetWidget<ProfileController> {
                             alignment: Alignment.center,
                             child: Container(
                               child: Text(
-                                row[0].values.toList()[2] +
-                                    row[0].values.toList()[3],
+                                globals.user[0].values.toList()[2] +
+                                    globals.user[0].values.toList()[3],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular32,
@@ -149,7 +148,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                                 right: 12,
                               ),
                               child: Text(
-                                row[0].values.toList()[2],
+                                globals.user[0].values.toList()[2],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular24,
@@ -204,7 +203,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                                 right: 12,
                               ),
                               child: Text(
-                                row[0].values.toList()[3],
+                                globals.user[0].values.toList()[3],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular24,
@@ -259,7 +258,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                                 right: 12,
                               ),
                               child: Text(
-                                row[0].values.toList()[1],
+                                globals.user[0].values.toList()[1],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular24,
@@ -314,7 +313,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                                 right: 12,
                               ),
                               child: Text(
-                                row[0].values.toList()[4],
+                                globals.user[0].values.toList()[4],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular24,
@@ -369,7 +368,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                                 right: 12,
                               ),
                               child: Text(
-                                row[0].values.toList()[5],
+                                globals.user[0].values.toList()[5],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular24,

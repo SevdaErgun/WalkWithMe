@@ -1,5 +1,5 @@
 import 'package:walkwithme/presentation/home_screen/home_screen.dart';
-
+import 'package:walkwithme/globals.dart' as globals;
 import '../../widgets/app_bar/appbar_subtitle_1.dart';
 import '../../widgets/app_bar/appbar_subtitle_2.dart';
 import '../../widgets/app_bar/appbar_title.dart';
@@ -14,8 +14,6 @@ import 'package:walkwithme/widgets/custom_text_form_field.dart';
 
 class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  final List<Map<String, dynamic>> row = Get.arguments['row'];
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +44,7 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
               margin: getMargin(right: 26),
               child: GestureDetector(
                 onTap: () => {
-                  Get.toNamed(AppRoutes.profileScreen, arguments: {'row': row})
+                  Get.toNamed(AppRoutes.profileScreen)
                 },
                 child: Icon(
                   Icons.cancel_outlined,
@@ -146,11 +144,6 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
               ],
             ),
           )),
-        ),
-        bottomNavigationBar: CustomBottomBar(
-          onChanged: (BottomBarEnum type) {
-            Get.toNamed(getCurrentRoute(type), id: 1);
-          },
         ),
       ),
     );
