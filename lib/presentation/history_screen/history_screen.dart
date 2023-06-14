@@ -27,16 +27,6 @@ class HistoryScreen extends GetWidget<HistoryController> {
             ),
           ),
           actions: [
-            Container(
-                child: GestureDetector(
-              onTap: () {
-                Get.toNamed(AppRoutes.dogsScreen);
-              },
-              child: Image.asset(
-                ImageConstant.imgDogIcon,
-                width: 35,
-              ),
-            )),
             SizedBox(
               width: 20,
             ),
@@ -94,6 +84,7 @@ class HistoryScreen extends GetWidget<HistoryController> {
           onChanged: (BottomBarEnum type) {
             Get.toNamed(getCurrentRoute(type));
           },
+          roleStatus: 'Walker',
         ),
       ),
     );
@@ -106,6 +97,8 @@ class HistoryScreen extends GetWidget<HistoryController> {
         return AppRoutes.homeScreen;
       case BottomBarEnum.Plus:
         return AppRoutes.addScheduleForWalkersScreen;
+      case BottomBarEnum.History:
+        return AppRoutes.historyScreen;
       case BottomBarEnum.Profile:
         return AppRoutes.profileScreen;
       default:

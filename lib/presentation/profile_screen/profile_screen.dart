@@ -395,6 +395,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
             print(type);
             Get.toNamed(getCurrentRoute(type));
           },
+          roleStatus: 'Dog Owner',
         ),
       ),
     );
@@ -407,6 +408,8 @@ class ProfileScreen extends GetWidget<ProfileController> {
         return AppRoutes.homeScreen;
       case BottomBarEnum.Plus:
         return AppRoutes.addScheduleForWalkersScreen;
+      case BottomBarEnum.History:
+        return AppRoutes.historyScreen;
       case BottomBarEnum.Profile:
         return AppRoutes.profileScreen;
       default:

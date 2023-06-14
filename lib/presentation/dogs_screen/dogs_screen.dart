@@ -19,10 +19,10 @@ class DogsScreen extends GetWidget<DogsController> {
       child: Scaffold(
         backgroundColor: ColorConstant.projectBackground,
         bottomNavigationBar: CustomBottomBar(
-          onChanged: (BottomBarEnum type) {
-            Get.toNamed(getCurrentRoute(type));
-          },
-        ),
+            onChanged: (BottomBarEnum type) {
+              Get.toNamed(getCurrentRoute(type));
+            },
+            roleStatus: 'Dog Owner'),
         appBar: CustomAppBar(
           height: getVerticalSize(
             70,
@@ -91,6 +91,8 @@ class DogsScreen extends GetWidget<DogsController> {
         return AppRoutes.homeScreen;
       case BottomBarEnum.Plus:
         return AppRoutes.addScheduleForWalkersScreen;
+      case BottomBarEnum.History:
+        return AppRoutes.historyScreen;
       case BottomBarEnum.Profile:
         return AppRoutes.profileScreen;
       default:
