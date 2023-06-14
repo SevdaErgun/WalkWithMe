@@ -1,5 +1,6 @@
 import 'package:walkwithme/presentation/home_screen/home_screen.dart';
 
+import '../../services/db/dog/dog_database.dart';
 import '../../widgets/custom_bottom_bar.dart';
 import '../dogs_screen/widgets/dogs_item_widget.dart';
 import 'controller/dogs_controller.dart';
@@ -11,8 +12,10 @@ import 'package:walkwithme/widgets/app_bar/appbar_subtitle_2.dart';
 import 'package:walkwithme/widgets/app_bar/appbar_title.dart';
 import 'package:walkwithme/widgets/app_bar/custom_app_bar.dart';
 
-// ignore_for_file: must_be_immutable
 class DogsScreen extends GetWidget<DogsController> {
+
+  DogDatabase dogDatabase = DogDatabase();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
