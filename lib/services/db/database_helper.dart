@@ -51,6 +51,19 @@ class DatabaseHelper{
          createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
           )
           ''');
+
+    await db.execute('''
+        CREATE TABLE Reservation(
+         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+         title TEXT,
+         start_date TIMESTAMP,
+         end_date TIMESTAMP,
+         dog_id INTEGER,
+         is_reserved INTEGER,
+         is_canceled INTEGER,
+         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+          )
+          ''');
   }
 
 }
