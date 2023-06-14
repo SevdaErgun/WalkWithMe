@@ -1,15 +1,16 @@
+import 'package:walkwithme/services/db/reservation/reservation_database.dart';
 import '../../widgets/custom_text_form_field.dart';
 import 'controller/add_schedule_for_walkers_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
-import 'package:walkwithme/widgets/app_bar/appbar_subtitle_1.dart';
-import 'package:walkwithme/widgets/app_bar/appbar_subtitle_2.dart';
 import 'package:walkwithme/widgets/app_bar/appbar_title.dart';
 import 'package:walkwithme/widgets/app_bar/custom_app_bar.dart';
 
 // ignore_for_file: must_be_immutable
-class AddScheduleForWalkersScreen
-    extends GetWidget<AddScheduleForWalkersController> {
+class AddScheduleForWalkersScreen extends GetWidget<AddScheduleForWalkersController> {
+
+  ReservationDatabase reservationDatabase = ReservationDatabase();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,10 +28,15 @@ class AddScheduleForWalkersScreen
           ),
           actions: [
             Container(
-              child: Icon(
-                Icons.verified,
-                color: Colors.green.shade400,
-                size: 32,
+              child: GestureDetector(
+                onTap: () => {
+                  makeReservation()
+                },
+                child: Icon(
+                  Icons.verified,
+                  color: Colors.green.shade400,
+                  size: 32,
+                ),
               ),
             ),
             SizedBox(
@@ -38,10 +44,15 @@ class AddScheduleForWalkersScreen
             ),
             Container(
               margin: getMargin(right: 26),
-              child: Icon(
-                Icons.cancel_outlined,
-                color: ColorConstant.blackText,
-                size: 32,
+              child: GestureDetector(
+                onTap: () => {
+                Get.toNamed(AppRoutes.homeScreen)
+                },
+                child: Icon(
+                  Icons.cancel_outlined,
+                  color: ColorConstant.blackText,
+                  size: 32,
+                ),
               ),
             ),
           ],
@@ -151,7 +162,7 @@ class AddScheduleForWalkersScreen
                   CustomTextFormField(
                     focusNode: FocusNode(),
                     autofocus: false,
-                    // controller: controller.surnameController,
+                    controller: controller.titleController,
                     hintText: "lbl_title".tr,
                     margin: getMargin(left: 30, top: 60, right: 30),
                   ),
@@ -204,14 +215,14 @@ class AddScheduleForWalkersScreen
                   CustomTextFormField(
                     focusNode: FocusNode(),
                     autofocus: false,
-                    // controller: controller.surnameController,
+                    controller: controller.startDateController,
                     hintText: "lbl_start_date".tr,
                     margin: getMargin(left: 30, top: 30, right: 30),
                   ),
                   CustomTextFormField(
                     focusNode: FocusNode(),
                     autofocus: false,
-                    // controller: controller.surnameController,
+                    controller: controller.endDateController,
                     hintText: "lbl_finish_date".tr,
                     margin: getMargin(left: 30, top: 30, right: 30, bottom: 30),
                   ),
@@ -222,5 +233,16 @@ class AddScheduleForWalkersScreen
         ),
       ),
     );
+  }
+
+  void makeReservation() {
+    Map<String, dynamic> row = {
+      ReservationDatabase.columnTitle: controller.titleController.text,
+      ReservationDatabase.columnStartDate: controller.startDateController.text,
+      ReservationDatabase.columnEndDate:controller.startDateController.text,
+      ReservationDatabase.columnDogId: 1,
+    };
+
+    reservationDatabase.insert(row);
   }
 }
