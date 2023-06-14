@@ -5,10 +5,9 @@ import 'package:walkwithme/core/app_export.dart';
 
 // ignore: must_be_immutable
 class DogsItemWidget extends StatelessWidget {
-  DogsItemWidget(this.dogsItemModelObj);
+  DogsItemWidget(this.dogItem);
 
-  DogsItemModel dogsItemModelObj;
-
+  Map<String, dynamic> dogItem;
   var controller = Get.find<DogsController>();
 
   @override
@@ -82,7 +81,7 @@ class DogsItemWidget extends StatelessWidget {
                     top: 16,
                   ),
                   child: Text(
-                    "lbl_dog_name".tr,
+                    dogItem['name'].tr,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
                     style: AppStyle.txtRobotoRomanRegular20Gray200,
@@ -102,7 +101,7 @@ class DogsItemWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "lbl_gender_aaaaaaa".tr,
+                  "lbl_gender:".tr + dogItem['gender'].tr,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.left,
                   style: AppStyle.txtRobotoRomanRegular24,
@@ -112,7 +111,7 @@ class DogsItemWidget extends StatelessWidget {
                     top: 48,
                   ),
                   child: Text(
-                    "lbl_breed_aaaaaa".tr,
+                    "lbl_breed:".tr + dogItem['breed'].tr,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
                     style: AppStyle.txtRobotoRomanRegular24,
