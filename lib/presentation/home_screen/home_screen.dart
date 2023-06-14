@@ -9,6 +9,7 @@ import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 
 // ignore_for_file: must_be_immutable
 class HomeScreen extends GetWidget<HomeController> {
+  String roleStatus = 'Walker';
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,16 +24,17 @@ class HomeScreen extends GetWidget<HomeController> {
             ),
           ),
           actions: [
-            Container(
-                child: GestureDetector(
-              onTap: () {
-                Get.toNamed(AppRoutes.dogsScreen);
-              },
-              child: Image.asset(
-                ImageConstant.imgDogIcon,
-                width: 35,
-              ),
-            )),
+            if (roleStatus == "Dog Owner")
+              Container(
+                  child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(AppRoutes.dogsScreen);
+                },
+                child: Image.asset(
+                  ImageConstant.imgDogIcon,
+                  width: 35,
+                ),
+              )),
             SizedBox(
               width: 20,
             ),
@@ -75,6 +77,7 @@ class HomeScreen extends GetWidget<HomeController> {
                       itemBuilder: (context, index) {
                         HomeItemModel model = controller
                             .homeModelObj.value.homeItemList.value[index];
+
                         return HomeItemWidget(
                           model,
                         );
@@ -90,6 +93,7 @@ class HomeScreen extends GetWidget<HomeController> {
           onChanged: (BottomBarEnum type) {
             Get.toNamed(getCurrentRoute(type));
           },
+          roleStatus: roleStatus,
         ),
       ),
     );
@@ -102,6 +106,8 @@ class HomeScreen extends GetWidget<HomeController> {
         return AppRoutes.homeScreen;
       case BottomBarEnum.Plus:
         return AppRoutes.addScheduleForWalkersScreen;
+      case BottomBarEnum.History:
+        return AppRoutes.historyScreen;
       case BottomBarEnum.Profile:
         return AppRoutes.profileScreen;
       default:

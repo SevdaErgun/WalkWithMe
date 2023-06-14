@@ -21,7 +21,7 @@ class ImageConstant {
 
   static String imgDog1 = 'assets/images/img_dog1.png';
 
-  static String imgHistory1 = 'assets/images/img_history1.png';
+  static String imgHistory = 'assets/images/img_history.png';
 
   static String imgRefresh1 = 'assets/images/img_refresh1.png';
 

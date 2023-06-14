@@ -2,30 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
 
 class CustomBottomBar extends StatelessWidget {
-  CustomBottomBar({this.onChanged});
+  CustomBottomBar({this.onChanged, this.roleStatus}) {
+    initializeBottomMenuList();
+  }
 
   RxInt selectedIndex = 0.obs;
 
-  List<BottomMenuModel> bottomMenuList = [
-    BottomMenuModel(
-      icon: ImageConstant.imgHome,
-      type: BottomBarEnum.Home,
-      isPng: true,
-    ),
-    BottomMenuModel(
-      icon: ImageConstant.imgPlus,
-      type: BottomBarEnum.Plus,
-      isPng: true,
-    ),
-    BottomMenuModel(
-      icon: ImageConstant.imgProfile,
-      type: BottomBarEnum.Profile,
-      isPng: true,
-    )
-  ];
+  late List<BottomMenuModel> bottomMenuList;
+
+  void initializeBottomMenuList() {
+    bottomMenuList = [
+      BottomMenuModel(
+        icon: ImageConstant.imgHome,
+        type: BottomBarEnum.Home,
+        isPng: true,
+      ),
+      (roleStatus == "Dog Owner")
+          ? BottomMenuModel(
+              icon: ImageConstant.imgPlus,
+              type: BottomBarEnum.Plus,
+              isPng: true,
+            )
+          : BottomMenuModel(
+              icon: ImageConstant.imgHistory,
+              type: BottomBarEnum.History,
+              isPng: true,
+            ),
+      BottomMenuModel(
+        icon: ImageConstant.imgProfile,
+        type: BottomBarEnum.Profile,
+        isPng: true,
+      ),
+    ];
+  }
 
   Function(BottomBarEnum)? onChanged;
-
+  String? roleStatus;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -95,11 +107,7 @@ class CustomBottomBar extends StatelessWidget {
   }
 }
 
-enum BottomBarEnum {
-  Home,
-  Plus,
-  Profile,
-}
+enum BottomBarEnum { Home, Plus, Profile, History }
 
 class BottomMenuModel {
   BottomMenuModel({
