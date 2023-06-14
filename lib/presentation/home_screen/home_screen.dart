@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
 import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 
-// ignore_for_file: must_be_immutable
 class HomeScreen extends GetWidget<HomeController> {
-  String roleStatus = 'Walker';
+
+  final List<Map<String, dynamic>> row = Get.arguments['row'];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,7 +25,7 @@ class HomeScreen extends GetWidget<HomeController> {
             ),
           ),
           actions: [
-            if (roleStatus == "Dog Owner")
+            if ( row[0].values.toList()[5] == "Dog Owner")
               Container(
                   child: GestureDetector(
                 onTap: () {
@@ -93,7 +94,7 @@ class HomeScreen extends GetWidget<HomeController> {
           onChanged: (BottomBarEnum type) {
             Get.toNamed(getCurrentRoute(type));
           },
-          roleStatus: roleStatus,
+          roleStatus:  row[0].values.toList()[5],
         ),
       ),
     );
