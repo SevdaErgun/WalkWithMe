@@ -44,20 +44,13 @@ class AppDecoration {
         ),
       );
   static BoxDecoration get outlineBlack9003f => BoxDecoration(
-        color: ColorConstant.whiteA700,
+        color: ColorConstant.cardBackground,
         boxShadow: [
           BoxShadow(
-            color: ColorConstant.black9003f,
-            spreadRadius: getHorizontalSize(
-              2,
-            ),
-            blurRadius: getHorizontalSize(
-              2,
-            ),
-            offset: Offset(
-              0,
-              14,
-            ),
+            color: Colors.grey.withOpacity(0.8),
+            spreadRadius: 0,
+            blurRadius: 5,
+            offset: Offset(0, 8),
           ),
         ],
       );
