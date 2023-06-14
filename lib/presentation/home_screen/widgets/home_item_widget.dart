@@ -29,7 +29,6 @@ class HomeItemWidget extends StatelessWidget {
       ),
       width: double.infinity,
       child: Stack(
-        //alignment: Alignment.centerLeft,
         children: [
           Positioned.fill(
             right: MediaQuery.sizeOf(context).width * 5 / 10,

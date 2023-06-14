@@ -79,8 +79,7 @@ class DogsItemWidget extends StatelessWidget {
                 ),
                 Padding(
                   padding: getPadding(
-                    top: 25,
-                    bottom: 7,
+                    top: 16,
                   ),
                   child: Text(
                     "lbl_dog_name".tr,
