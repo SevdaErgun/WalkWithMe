@@ -11,17 +11,17 @@ class ImageConstant {
 
   static String imgDogwalking1 = 'assets/images/img_dogwalking1.png';
 
-  static String imgHome11 = 'assets/images/img_home11.png';
+  static String imgHome = 'assets/images/img_home.png';
 
-  static String imgUser81 = 'assets/images/img_user81.png';
+  static String imgProfile = 'assets/images/img_profile.png';
 
-  static String imgPlus51 = 'assets/images/img_plus51.png';
+  static String imgPlus = 'assets/images/img_plus.png';
 
   static String imgUser91 = 'assets/images/img_user91.png';
 
   static String imgDog1 = 'assets/images/img_dog1.png';
 
-  static String imgHistory1 = 'assets/images/img_history1.png';
+  static String imgHistory = 'assets/images/img_history.png';
 
   static String imgRefresh1 = 'assets/images/img_refresh1.png';
 
