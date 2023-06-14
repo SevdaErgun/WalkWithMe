@@ -11,14 +11,34 @@ import 'package:walkwithme/widgets/app_bar/appbar_subtitle_1.dart';
 import 'package:walkwithme/widgets/app_bar/appbar_subtitle_2.dart';
 import 'package:walkwithme/widgets/app_bar/appbar_title.dart';
 import 'package:walkwithme/widgets/app_bar/custom_app_bar.dart';
+import 'package:walkwithme/globals.dart' as globals;
 
 class DogsScreen extends GetWidget<DogsController> {
+  //DogDatabase dogDatabase = DogDatabase();
 
-  DogDatabase dogDatabase = DogDatabase();
+  Future<List<Map<String, dynamic>>> dogList =
+      DogDatabase.getByOwner(globals.user[0].values.toList()[6]);
 
-   /** "dogDatabase.getByOwner(globals.user[0].values.toList()[5]);" Kod ile tüm köpekler gelecek. Future<List<Map<String, dynamic>>> return type ı.
-  İçinden bulabilirsin.**/
+  /*Future<List<Map<String, dynamic>>> ccc = [
+    {
+      'columnId': 'id1',
+      'columnName': 'name1',
+      'columnGender': 'gender1',
+      'columnBreed': 'breed1',
+      'columnOwner': 'owner1'
+    },
+    {
+      'columnId': 'id1',
+      'columnName': 'name2',
+      'columnGender': 'gender2',
+      'columnBreed': 'breed2',
+      'columnOwner': 'owner2'
+    }
+  ];*/
 
+/*Kod ile tüm köpekler gelecek. Future<List<Map<String, dynamic>>> return type ı.
+  İçinden bulabilirsin.
+  print(globals.user[0].values.toList()[6]);*/
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -56,36 +76,40 @@ class DogsScreen extends GetWidget<DogsController> {
           styleType: Style.bgShadowBlack9003f,
         ),
         body: Container(
-            padding: getPadding(top: 45),
-            alignment: Alignment.topCenter,
-            child: Container(
-              width: MediaQuery.sizeOf(context).width * 9 / 10,
-              child: Obx(
-                () => ListView.separated(
-                  physics: BouncingScrollPhysics(),
-                  shrinkWrap: true,
-                  separatorBuilder: (
-                    context,
-                    index,
-                  ) {
-                    return SizedBox(
-                      height: getVerticalSize(
-                        35,
-                      ),
+          padding: getPadding(top: 45),
+          alignment: Alignment.topCenter,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 9 / 10,
+            child: Obx(
+              () => FutureBuilder<List<Map<String, dynamic>>>(
+                future: dogList,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<Map<String, dynamic>> dogItems = snapshot.data!;
+                    return ListView.separated(
+                      physics: BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          height: getVerticalSize(35),
+                        );
+                      },
+                      itemCount: dogItems.length,
+                      itemBuilder: (context, index) {
+                        Map<String, dynamic> model = dogItems[index];
+                        return DogsItemWidget(model);
+                      },
                     );
-                  },
-                  itemCount:
-                      controller.dogsModelObj.value.dogsItemList.value.length,
-                  itemBuilder: (context, index) {
-                    DogsItemModel model =
-                        controller.dogsModelObj.value.dogsItemList.value[index];
-                    return DogsItemWidget(
-                      model,
-                    );
-                  },
-                ),
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  }
+                  // You can return a placeholder widget or null while data is loading
+                  return CircularProgressIndicator();
+                },
               ),
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }
