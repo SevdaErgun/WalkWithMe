@@ -14,31 +14,34 @@ class AddScheduleForWalkersScreen
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorConstant.gray200,
+        backgroundColor: ColorConstant.projectBackground,
         appBar: CustomAppBar(
           height: getVerticalSize(
-            95,
+            70,
           ),
           title: AppbarTitle(
-            text: "lbl_walkwithme2".tr,
+            text: "walkwithme".tr,
             margin: getMargin(
-              left: 40,
+              left: 26,
             ),
           ),
           actions: [
-            AppbarSubtitle2(
-              text: "lbl_confirm".tr,
-              margin: getMargin(
-                top: 35,
-                right: 15,
+            Container(
+              child: Icon(
+                Icons.verified,
+                color: Colors.green.shade400,
+                size: 32,
               ),
             ),
-            AppbarSubtitle1(
-              text: "lbl_cancel".tr,
-              margin: getMargin(
-                left: 10,
-                top: 35,
-                right: 30,
+            SizedBox(
+              width: 15,
+            ),
+            Container(
+              margin: getMargin(right: 26),
+              child: Icon(
+                Icons.cancel_outlined,
+                color: ColorConstant.blackText,
+                size: 32,
               ),
             ),
           ],

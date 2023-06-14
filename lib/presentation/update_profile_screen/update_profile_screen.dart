@@ -21,26 +21,32 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: ColorConstant.gray200,
+        backgroundColor: ColorConstant.projectBackground,
         appBar: CustomAppBar(
           height: 70,
           title: AppbarTitle(
-            text: "lbl_walkwithme2".tr,
+            text: "walkwithme".tr,
             margin: getMargin(
-              left: 30,
+              left: 26,
             ),
           ),
           actions: [
-            AppbarSubtitle2(
-              text: "lbl_confirm".tr,
-              margin: getMargin(left: 45, top: 25),
+            Container(
+              child: Icon(
+                Icons.verified,
+                color: Colors.green.shade400,
+                size: 32,
+              ),
             ),
-            AppbarSubtitle1(
-              text: "lbl_cancel".tr,
-              margin: getMargin(
-                left: 20,
-                top: 25,
-                right: 25,
+            SizedBox(
+              width: 15,
+            ),
+            Container(
+              margin: getMargin(right: 26),
+              child: Icon(
+                Icons.cancel_outlined,
+                color: ColorConstant.blackText,
+                size: 32,
               ),
             ),
           ],
