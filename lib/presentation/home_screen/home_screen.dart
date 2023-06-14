@@ -5,7 +5,6 @@ import 'controller/home_controller.dart';
 import 'models/home_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
-import 'package:walkwithme/presentation/home_one_page/home_one_page.dart';
 import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 
 // ignore_for_file: must_be_immutable
@@ -14,7 +13,7 @@ class HomeScreen extends GetWidget<HomeController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorConstant.gray200,
+        backgroundColor: ColorConstant.projectBackground,
         appBar: CustomAppBar(
           height: 70,
           title: AppbarTitle(
@@ -50,16 +49,13 @@ class HomeScreen extends GetWidget<HomeController> {
         ),
         body: Container(
           width: double.infinity,
+          padding: EdgeInsets.only(top: 45),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
-                child: Padding(
-                  padding: getPadding(
-                    left: 82,
-                    top: 97,
-                    right: 59,
-                  ),
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width * 9 / 10,
                   child: Obx(
                     () => ListView.separated(
                       physics: BouncingScrollPhysics(),
@@ -70,7 +66,7 @@ class HomeScreen extends GetWidget<HomeController> {
                       ) {
                         return SizedBox(
                           height: getVerticalSize(
-                            97,
+                            50,
                           ),
                         );
                       },
@@ -92,7 +88,7 @@ class HomeScreen extends GetWidget<HomeController> {
         ),
         bottomNavigationBar: CustomBottomBar(
           onChanged: (BottomBarEnum type) {
-            Get.toNamed(getCurrentRoute(type), id: 1);
+            Get.toNamed(getCurrentRoute(type));
           },
         ),
       ),
@@ -103,11 +99,11 @@ class HomeScreen extends GetWidget<HomeController> {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Home11:
-        return AppRoutes.homeOnePage;
+        return AppRoutes.homeScreen;
       case BottomBarEnum.Plus51:
-        return "/";
+        return AppRoutes.addScheduleForWalkersScreen;
       case BottomBarEnum.User81:
-        return "/";
+        return AppRoutes.profileScreen;
       default:
         return "/";
     }
@@ -116,8 +112,8 @@ class HomeScreen extends GetWidget<HomeController> {
   ///Handling page based on route
   Widget getCurrentPage(String currentRoute) {
     switch (currentRoute) {
-      case AppRoutes.homeOnePage:
-        return HomeOnePage();
+      case AppRoutes.homeScreen:
+        return HomeScreen();
       default:
         return DefaultWidget();
     }

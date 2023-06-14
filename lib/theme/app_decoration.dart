@@ -13,8 +13,8 @@ class AppDecoration {
             0.75,
           ),
           colors: [
-            ColorConstant.deepOrangeA400D8,
-            ColorConstant.orange300D8,
+            ColorConstant.deepOrangeA400D8.withOpacity(0.75),
+            ColorConstant.orange300D8.withOpacity(0.75),
           ],
         ),
       );
@@ -39,7 +39,7 @@ class AppDecoration {
           ),
           colors: [
             ColorConstant.deepOrangeA40001,
-            ColorConstant.orange300,
+            ColorConstant.navigationBar,
           ],
         ),
       );

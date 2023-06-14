@@ -2,6 +2,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ColorConstant {
+  static Color projectBackground = fromHex('#D6E9EA');
+
+  static Color cardBackground = fromHex('#F9F2F2');
+
+  static Color logoColor = fromHex('#1E1E1E');
+
   static Color gray700 = fromHex('#616763');
 
   static Color orange300D8 = fromHex('#d8f4b04a');
@@ -9,6 +15,8 @@ class ColorConstant {
   static Color gray500 = fromHex('#9a9898');
 
   static Color blueGray400 = fromHex('#888888');
+
+  static Color blackText = fromHex('#1E1E1E');
 
   static Color blue30001 = fromHex('#70b3da');
 
@@ -18,7 +26,7 @@ class ColorConstant {
 
   static Color black9003f = fromHex('#3f000000');
 
-  static Color orange300 = fromHex('#f4b04a');
+  static Color navigationBar = fromHex('#F48F4A');
 
   static Color orange30001 = fromHex('#f5b14b');
 

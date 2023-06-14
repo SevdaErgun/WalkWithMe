@@ -2,6 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
 
 class AppStyle {
+  static TextStyle txtDancingScript = TextStyle(
+    color: ColorConstant.logoColor,
+    fontSize: getFontSize(
+      28,
+    ),
+    fontFamily: 'Dancing Script',
+    fontWeight: FontWeight.bold,
+  );
+
+  static TextStyle txtDancingScript32 = TextStyle(
+    color: ColorConstant.logoColor,
+    fontSize: getFontSize(
+      32,
+    ),
+    fontFamily: 'Dancing Script',
+    fontWeight: FontWeight.bold,
+  );
+
   static TextStyle txtRobotoRomanRegular24Blue300 = TextStyle(
     color: ColorConstant.blue300,
     fontSize: getFontSize(
@@ -38,19 +56,19 @@ class AppStyle {
     fontWeight: FontWeight.w400,
   );
 
-  static TextStyle txtRobotoRomanRegular24Black900 = TextStyle(
-    color: ColorConstant.black900,
+  static TextStyle txtRobotoRomanRegular14Black900 = TextStyle(
+    color: ColorConstant.blackText,
     fontSize: getFontSize(
-      24,
+      16,
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
   );
 
-  static TextStyle txtRobotoRomanRegular20Red400 = TextStyle(
+  static TextStyle txtRobotoRomanRegular18Red400 = TextStyle(
     color: ColorConstant.red400,
     fontSize: getFontSize(
-      20,
+      18,
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
@@ -93,16 +111,16 @@ class AppStyle {
   );
 
   static TextStyle txtRobotoRomanRegular20Black900 = TextStyle(
-    color: ColorConstant.black900,
+    color: ColorConstant.blackText,
     fontSize: getFontSize(
-      20,
+      16,
     ),
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
   );
 
   static TextStyle txtRobotoRegular20 = TextStyle(
-    color: ColorConstant.black900,
+    color: ColorConstant.blackText,
     fontSize: getFontSize(
       20,
     ),

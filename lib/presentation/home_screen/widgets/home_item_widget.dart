@@ -15,58 +15,25 @@ class HomeItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: getVerticalSize(
-        287,
-      ),
-      width: getHorizontalSize(
-        625,
-      ),
-      child: Stack(
-        alignment: Alignment.centerLeft,
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: Container(
-              padding: getPadding(
-                left: 56,
-                top: 38,
-                right: 56,
-                bottom: 38,
-              ),
-              decoration: AppDecoration.outlineBlack9003f1.copyWith(
-                borderRadius: BorderRadiusStyle.roundedBorder24,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  CustomButton(
-                    height: getVerticalSize(
-                      44,
-                    ),
-                    width: getHorizontalSize(
-                      233,
-                    ),
-                    text: "lbl_deny".tr,
-                    margin: getMargin(
-                      top: 166,
-                    ),
-                    variant: ButtonVariant.OutlineRed400,
-                  ),
-                ],
-              ),
-            ),
+      decoration: BoxDecoration(
+        color: ColorConstant.cardBackground,
+        borderRadius: BorderRadius.all(Radius.circular(13)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.8),
+            spreadRadius: 0,
+            blurRadius: 5,
+            offset: Offset(0, 8),
           ),
-          Align(
-            alignment: Alignment.centerLeft,
+        ],
+      ),
+      width: double.infinity,
+      child: Stack(
+        //alignment: Alignment.centerLeft,
+        children: [
+          Positioned.fill(
+            right: MediaQuery.sizeOf(context).width * 5 / 10,
             child: Container(
-              padding: getPadding(
-                left: 20,
-                top: 17,
-                right: 20,
-                bottom: 17,
-              ),
               decoration:
                   AppDecoration.gradientDeeporangeA400d8Orange300d8.copyWith(
                 borderRadius: BorderRadiusStyle.customBorderBR299,
@@ -75,140 +42,142 @@ class HomeItemWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomImageView(
-                        imagePath: ImageConstant.imgUser91,
-                        height: getSize(
-                          45,
-                        ),
-                        width: getSize(
-                          45,
-                        ),
+                children: [],
+              ),
+            ),
+          ),
+          Container(
+            child: Column(children: [
+              Container(
+                margin: EdgeInsets.all(10),
+                child: Row(
+                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomImageView(
+                      imagePath: ImageConstant.imgUser91,
+                      height: getSize(
+                        35,
                       ),
-                      Padding(
-                        padding: getPadding(
-                          left: 9,
-                          top: 6,
-                          bottom: 9,
-                        ),
-                        child: Text(
-                          "lbl_name_surname".tr,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.left,
-                          style: AppStyle.txtRobotoRomanRegular24Black900,
-                        ),
-                      ),
-                      Container(
-                        height: getSize(
-                          7,
-                        ),
-                        width: getSize(
-                          7,
-                        ),
-                        margin: getMargin(
-                          left: 16,
-                          top: 21,
-                          bottom: 17,
-                        ),
-                        decoration: BoxDecoration(
-                          color: ColorConstant.red400,
-                          borderRadius: BorderRadius.circular(
-                            getHorizontalSize(
-                              3,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: getPadding(
-                        top: 143,
-                        right: 3,
-                        bottom: 21,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          CustomButton(
-                            height: getVerticalSize(
-                              44,
-                            ),
-                            width: getHorizontalSize(
-                              233,
-                            ),
-                            text: "lbl_confirm".tr,
-                            fontStyle:
-                                ButtonFontStyle.RobotoRomanRegular20Gray200,
-                          ),
-                          Padding(
-                            padding: getPadding(
-                              left: 24,
-                            ),
-                            child: SizedBox(
-                              height: getVerticalSize(
-                                44,
-                              ),
-                              child: VerticalDivider(
-                                width: getHorizontalSize(
-                                  1,
-                                ),
-                                thickness: getVerticalSize(
-                                  1,
-                                ),
-                                color: ColorConstant.black900,
-                                indent: getHorizontalSize(
-                                  1,
-                                ),
-                                endIndent: getHorizontalSize(
-                                  4,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      width: getSize(
+                        35,
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: getPadding(
+                        left: 9,
+                        top: 6,
+                        bottom: 9,
+                      ),
+                      child: Text(
+                        "lbl_name_surname".tr,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.left,
+                        style: AppStyle.txtRobotoRomanRegular14Black900,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      height: getSize(
+                        7,
+                      ),
+                      width: getSize(
+                        7,
+                      ),
+                      decoration: BoxDecoration(
+                        color: ColorConstant.red400,
+                        borderRadius: BorderRadius.circular(
+                          getHorizontalSize(
+                            3,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        child: Text(
+                          "lbl_1_hour_ago".tr,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.left,
+                          style: AppStyle.txtRobotoRomanRegular18Red400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              width: getHorizontalSize(
-                510,
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                child: Text(
+                  "msg_lorem_ipsum_is_simply".tr,
+                  maxLines: null,
+                  textAlign: TextAlign.left,
+                  style: AppStyle.txtRobotoRomanRegular20Black900,
+                ),
               ),
-              margin: getMargin(
-                top: 91,
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width * 3 / 10,
+                      child: ElevatedButton(
+                          onPressed: () {},
+                          child: const Text('Confirm'),
+                          style: ButtonStyle(
+                              elevation: MaterialStateProperty.all(0),
+                              backgroundColor: MaterialStateProperty.all(
+                                  ColorConstant.blue30001),
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    8.0), /*side: BorderSide(color: Colors.red)*/
+                              )))),
+                    ),
+                    Padding(
+                      padding: getPadding(left: 24, right: 24),
+                      child: SizedBox(
+                        height: getVerticalSize(
+                          44,
+                        ),
+                        child: VerticalDivider(
+                          width: getHorizontalSize(
+                            1,
+                          ),
+                          thickness: getVerticalSize(
+                            1,
+                          ),
+                          color: ColorConstant.black900,
+                          indent: getHorizontalSize(
+                            1,
+                          ),
+                          endIndent: getHorizontalSize(
+                            4,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width * 3 / 10,
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        child: const Text('Deny',
+                            style: TextStyle(
+                                color: Color.fromRGBO(235, 88, 78, 1))),
+                        style: OutlinedButton.styleFrom(
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(8.0)),
+                          side: BorderSide(
+                              width: 1.0, color: ColorConstant.red400),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
-              child: Text(
-                "msg_lorem_ipsum_is_simply".tr,
-                maxLines: null,
-                textAlign: TextAlign.left,
-                style: AppStyle.txtRobotoRomanRegular20Black900,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: getPadding(
-                top: 30,
-              ),
-              child: Text(
-                "lbl_1_hour_ago".tr,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.left,
-                style: AppStyle.txtRobotoRomanRegular20Red400,
-              ),
-            ),
+            ]),
           ),
         ],
       ),
