@@ -24,7 +24,7 @@ class DogDatabase {
         .rawQuery("SELECT * FROM $table WHERE id = '$id'");
   }
 
-  static Future<List<Map<String, dynamic>>> getByOwner(String owner) async {
+  static Future<List<Map<String, dynamic>>> getByOwner(int owner) async {
     return await DatabaseHelper.getDb()
         .rawQuery("SELECT * FROM $table WHERE owner = '$owner'");
   }

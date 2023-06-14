@@ -17,7 +17,7 @@ class DogsScreen extends GetWidget<DogsController> {
   //DogDatabase dogDatabase = DogDatabase();
 
   Future<List<Map<String, dynamic>>> dogList =
-      DogDatabase.getByOwner(globals.user[0].values.toList()[6]);
+      DogDatabase.getByOwner(globals.user[0].values.toList()[0]);
 
   /*Future<List<Map<String, dynamic>>> ccc = [
     {
@@ -84,6 +84,7 @@ class DogsScreen extends GetWidget<DogsController> {
                 future: dogList,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
+                    print(snapshot.data);
                     List<Map<String, dynamic>> dogListData = snapshot.data!;
                     return ListView.separated(
                       physics: BouncingScrollPhysics(),
