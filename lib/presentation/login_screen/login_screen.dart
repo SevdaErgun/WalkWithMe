@@ -156,7 +156,7 @@ class LoginScreen extends GetWidget<LoginController> {
   }
 
   void login() async {
-  var row = await customerDatabase.getById(controller.emailController.text,controller.passwordController.text, "Walker");
+  var row = await customerDatabase.getById(controller.emailController.text,controller.passwordController.text);
   if(row.isNotEmpty ){
     Get.toNamed(AppRoutes.profileScreen, arguments: {
       'row' : row

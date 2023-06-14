@@ -1,6 +1,5 @@
 import 'package:walkwithme/core/app_export.dart';
 import 'package:walkwithme/presentation/update_profile_screen/models/update_profile_model.dart';
-import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 class UpdateProfileController extends GetxController {

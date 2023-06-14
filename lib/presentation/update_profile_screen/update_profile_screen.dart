@@ -12,9 +12,12 @@ import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 import 'package:walkwithme/widgets/custom_button.dart';
 import 'package:walkwithme/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
-class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
+
+class UpdateProfileScreen extends GetWidget<UpdateProfileController>{
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final List<Map<String, dynamic>> row = Get.arguments['row'];
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +46,15 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
             ),
             Container(
               margin: getMargin(right: 26),
-              child: Icon(
-                Icons.cancel_outlined,
-                color: ColorConstant.blackText,
-                size: 32,
+              child: GestureDetector(
+                onTap: () => {
+                  Get.toNamed(AppRoutes.profileScreen, arguments: {'row' : row})
+                },
+                child: Icon(
+                  Icons.cancel_outlined,
+                  color: ColorConstant.blackText,
+                  size: 32,
+                ),
               ),
             ),
           ],

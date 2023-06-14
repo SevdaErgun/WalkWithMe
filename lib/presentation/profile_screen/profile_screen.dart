@@ -9,6 +9,7 @@ import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 
 // ignore_for_file: must_be_immutable
 class ProfileScreen extends GetWidget<ProfileController> {
+
   final List<Map<String, dynamic>> row = Get.arguments['row'];
 
   @override

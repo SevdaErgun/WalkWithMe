@@ -1,3 +1,4 @@
+import '../../services/db/dog/dog_database.dart';
 import '../../widgets/custom_text_form_field.dart';
 import 'controller/add_dog_controller.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,9 @@ import 'package:walkwithme/widgets/app_bar/custom_app_bar.dart';
 
 // ignore_for_file: must_be_immutable
 class AddDogScreen extends GetWidget<AddDogController> {
+
+  DogDatabase dogDatabase = DogDatabase();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -26,10 +30,15 @@ class AddDogScreen extends GetWidget<AddDogController> {
           ),
           actions: [
             Container(
-              child: Icon(
-                Icons.verified,
-                color: Colors.green.shade400,
-                size: 32,
+              child: GestureDetector(
+                onTap: () => {
+                  _insert()
+                },
+                child: Icon(
+                  Icons.verified,
+                  color: Colors.green.shade400,
+                  size: 32,
+                ),
               ),
             ),
             SizedBox(
@@ -147,21 +156,21 @@ class AddDogScreen extends GetWidget<AddDogController> {
                   CustomTextFormField(
                     focusNode: FocusNode(),
                     autofocus: false,
-                    // controller: controller.surnameController,
+                    controller: controller.dogNameController,
                     hintText: "lbl_dog_name".tr,
                     margin: getMargin(left: 30, top: 60, right: 30),
                   ),
                   CustomTextFormField(
                     focusNode: FocusNode(),
                     autofocus: false,
-                    // controller: controller.surnameController,
+                    controller: controller.dogGenderController,
                     hintText: "lbl_dog_gender".tr,
                     margin: getMargin(left: 30, top: 33, right: 30),
                   ),
                   CustomTextFormField(
                     focusNode: FocusNode(),
                     autofocus: false,
-                    // controller: controller.surnameController,
+                    controller: controller.dogBreedController,
                     hintText: "lbl_dog_breed".tr,
                     margin: getMargin(left: 30, top: 33, right: 30, bottom: 30),
                   ),
@@ -172,5 +181,17 @@ class AddDogScreen extends GetWidget<AddDogController> {
         ),
       ),
     );
+  }
+
+  void _insert() async {
+    // row to insert
+    Map<String, dynamic> row = {
+      DogDatabase.columnName: controller.dogNameController.text,
+      DogDatabase.columnGender: controller.dogGenderController.text,
+      DogDatabase.columnBreed: controller.dogBreedController.text,
+    };
+    final id = await dogDatabase.insert(row);
+
+    Get.toNamed(AppRoutes.dogsScreen);
   }
 }
