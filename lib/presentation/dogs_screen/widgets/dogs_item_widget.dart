@@ -81,7 +81,7 @@ class DogsItemWidget extends StatelessWidget {
                     top: 16,
                   ),
                   child: Text(
-                    dogItem['name'].tr,
+                    dogItem['name'],
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
                     style: AppStyle.txtRobotoRomanRegular20Gray200,
@@ -101,7 +101,7 @@ class DogsItemWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "lbl_gender:".tr + dogItem['gender'].tr,
+                  "Gender : " + dogItem['gender'],
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.left,
                   style: AppStyle.txtRobotoRomanRegular24,
@@ -111,7 +111,7 @@ class DogsItemWidget extends StatelessWidget {
                     top: 48,
                   ),
                   child: Text(
-                    "lbl_breed:".tr + dogItem['breed'].tr,
+                    "Breed : " + dogItem['breed'],
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
                     style: AppStyle.txtRobotoRomanRegular24,
