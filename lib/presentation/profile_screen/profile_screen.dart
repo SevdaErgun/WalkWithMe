@@ -34,7 +34,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
               ),
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(AppRoutes.updateProfileScreen);
+                  Get.toNamed(AppRoutes.updateProfileScreen, arguments: {'row' : row});
                 },
                 child: Text(
                   "lbl_update_info".tr,

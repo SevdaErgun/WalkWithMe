@@ -12,9 +12,12 @@ import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 import 'package:walkwithme/widgets/custom_button.dart';
 import 'package:walkwithme/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
-class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
+
+class UpdateProfileScreen extends GetWidget<UpdateProfileController>{
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final List<Map<String, dynamic>> row = Get.arguments['row'];
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,9 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
               margin: getMargin(left: 45, top: 25),
             ),
             AppbarSubtitle1(
+              onTap: () => {
+               Get.toNamed(AppRoutes.profileScreen, arguments: {'row' : row})
+              },
               text: "lbl_cancel".tr,
               margin: getMargin(
                 left: 20,

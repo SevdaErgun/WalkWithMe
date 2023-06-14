@@ -20,8 +20,8 @@ class CustomerDatabase {
     return await DatabaseHelper.getDb().insert(table,row);
   }
 
-  Future<List<Map<String, dynamic>>> getById(String email, String password, String role) async {
-    return await DatabaseHelper.getDb().rawQuery("SELECT * FROM $table WHERE email = '$email' AND password = '$password' AND role = '$role'");
+  Future<List<Map<String, dynamic>>> getById(String email, String password) async {
+    return await DatabaseHelper.getDb().rawQuery("SELECT * FROM $table WHERE email = '$email' AND password = '$password'");
   }
 
   // All of the rows are returned as a list of maps, where each map is

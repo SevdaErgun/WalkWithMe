@@ -317,7 +317,7 @@ class RegisterScreen extends GetWidget<RegisterController> {
       CustomerDatabase.columnSurname: controller.surnameController.text,
       CustomerDatabase.columnEmail: controller.emailController.text,
       CustomerDatabase.columnPassword: controller.passwordController.text,
-      CustomerDatabase.columnRole: "Walker",
+      CustomerDatabase.columnRole: controller.roleStatus.toString(),
     };
     final id = await customerDatabase.insert(row);
     Get.toNamed(AppRoutes.loginScreen);
