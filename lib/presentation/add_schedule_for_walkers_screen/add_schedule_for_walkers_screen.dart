@@ -6,6 +6,7 @@ import 'package:walkwithme/core/app_export.dart';
 import 'package:walkwithme/widgets/app_bar/appbar_title.dart';
 import 'package:walkwithme/widgets/app_bar/custom_app_bar.dart';
 import 'package:date_time_picker/date_time_picker.dart';
+import 'package:walkwithme/globals.dart' as globals;
 
 // ignore_for_file: must_be_immutable
 class AddScheduleForWalkersScreen
@@ -286,6 +287,8 @@ class AddScheduleForWalkersScreen
       ReservationDatabase.columnStartDate: controller.startDateController.text,
       ReservationDatabase.columnEndDate: controller.startDateController.text,
       ReservationDatabase.columnDogId: c.itemCurrent.value,
+      ReservationDatabase.columnWalkerId: 1,
+      ReservationDatabase.columnDogOwnerId: globals.user["role"]
     };
 
     reservationDatabase.insert(row);
