@@ -17,28 +17,8 @@ class DogsScreen extends GetWidget<DogsController> {
   //DogDatabase dogDatabase = DogDatabase();
 
   Future<List<Map<String, dynamic>>> dogList =
-      DogDatabase.getByOwner(globals.user[0].values.toList()[0]);
+      DogDatabase.getByOwner(globals.user["id"]);
 
-  /*Future<List<Map<String, dynamic>>> ccc = [
-    {
-      'columnId': 'id1',
-      'columnName': 'name1',
-      'columnGender': 'gender1',
-      'columnBreed': 'breed1',
-      'columnOwner': 'owner1'
-    },
-    {
-      'columnId': 'id1',
-      'columnName': 'name2',
-      'columnGender': 'gender2',
-      'columnBreed': 'breed2',
-      'columnOwner': 'owner2'
-    }
-  ];*/
-
-/*Kod ile tüm köpekler gelecek. Future<List<Map<String, dynamic>>> return type ı.
-  İçinden bulabilirsin.
-  print(globals.user[0].values.toList()[6]);*/
   @override
   Widget build(BuildContext context) {
     return SafeArea(

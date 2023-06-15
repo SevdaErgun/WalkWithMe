@@ -323,28 +323,4 @@ class RegisterScreen extends GetWidget<RegisterController> {
     Get.toNamed(AppRoutes.loginScreen);
   }
 
-  void _query() async {
-    final allRows = await customerDatabase.queryAllRows();
-    debugPrint('query all rows:');
-    for (final row in allRows) {
-      debugPrint(row.toString());
-    }
-  }
-
-  void _update() async {
-    // row to update
-    Map<String, dynamic> row = {
-      CustomerDatabase.columnId: 1,
-      CustomerDatabase.columnName: 'Mary',
-    };
-    final rowsAffected = await customerDatabase.update(row);
-    debugPrint('updated $rowsAffected row(s)');
-  }
-
-  void _delete() async {
-    // Assuming that the number of rows is the id for the last row.
-    final id = await customerDatabase.queryRowCount();
-    final rowsDeleted = await customerDatabase.delete(id);
-    debugPrint('deleted $rowsDeleted row(s): row $id');
-  }
 }
