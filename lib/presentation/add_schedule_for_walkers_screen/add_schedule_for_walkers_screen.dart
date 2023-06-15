@@ -285,7 +285,7 @@ class AddScheduleForWalkersScreen
     Map<String, dynamic> row = {
       ReservationDatabase.columnTitle: controller.titleController.text,
       ReservationDatabase.columnStartDate: controller.startDateController.text,
-      ReservationDatabase.columnEndDate: controller.startDateController.text,
+      ReservationDatabase.columnEndDate: controller.endDateController.text,
       ReservationDatabase.columnDogId: c.itemCurrent.value,
       ReservationDatabase.columnWalkerId: 1,
       ReservationDatabase.columnDogOwnerId: globals.user["id"]
