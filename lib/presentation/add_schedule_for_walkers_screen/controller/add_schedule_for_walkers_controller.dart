@@ -10,8 +10,7 @@ class AddScheduleForWalkersController extends GetxController {
   TextEditingController dogIdController = TextEditingController();
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
-  /*Future<List<Map<String, dynamic>>> dogList =
-      DogDatabase.getByOwner(globals.user[0].values.toList()[0]);*/
+
   var dogList = <Map<String, dynamic>>[].obs;
   // It is mandatory initialize with one value from listType
   var items = <String>['a', 'bbbbbbbbb', 'c', 'd'].obs;
@@ -24,7 +23,6 @@ class AddScheduleForWalkersController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    //Future<List<Map<String, dynamic>>> dogList =await DogDatabase.getByOwner(globals.user[0].values.toList()[0]);
   }
 
   @override
@@ -41,7 +39,7 @@ class AddScheduleForWalkersController extends GetxController {
   void fetchDogList() async {
     // Fetch the dog list using your desired logic
     List<Map<String, dynamic>> fetchedList =
-        await DogDatabase.getByOwner(globals.user[0].values.toList()[0]);
+        await DogDatabase.getByOwner(globals.user["id"]);
 
     items.clear();
     for (var dogMap in fetchedList) {

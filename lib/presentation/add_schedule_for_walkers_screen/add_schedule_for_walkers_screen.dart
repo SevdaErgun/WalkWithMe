@@ -176,8 +176,8 @@ class AddScheduleForWalkersScreen
                       alignment: Alignment.centerLeft,
                       child: DropdownButton<String>(
                           alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 10),
+                          // padding: EdgeInsets.symmetric(
+                          //     vertical: 10, horizontal: 10),
                           value: c.itemCurrent.value,
                           items: c.items.map((String item) {
                             return DropdownMenuItem<String>(
@@ -228,7 +228,7 @@ class AddScheduleForWalkersScreen
 
                             return true;
                           },
-                          onChanged: (val) => print(val),
+                          onChanged: (val) => controller.startDateController.text = val,
                           validator: (val) {
                             print(val);
                             return null;
@@ -261,7 +261,7 @@ class AddScheduleForWalkersScreen
 
                             return true;
                           },
-                          onChanged: (val) => print(val),
+                          onChanged: (val) => controller.endDateController.text = val,
                           validator: (val) {
                             print(val);
                             return null;
@@ -285,9 +285,11 @@ class AddScheduleForWalkersScreen
       ReservationDatabase.columnTitle: controller.titleController.text,
       ReservationDatabase.columnStartDate: controller.startDateController.text,
       ReservationDatabase.columnEndDate: controller.startDateController.text,
-      ReservationDatabase.columnDogId: 1,
+      ReservationDatabase.columnDogId: c.itemCurrent.value,
     };
 
     reservationDatabase.insert(row);
+
+    Get.toNamed(AppRoutes.homeScreen);
   }
 }
