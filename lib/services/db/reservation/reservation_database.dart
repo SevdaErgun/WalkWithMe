@@ -11,6 +11,8 @@ class ReservationDatabase {
   static const columnDogId = 'dog_id';
   static const columnIsReserved = 'is_reserved';
   static const columnIsCanceled = 'is_canceled';
+  static const columnWalkerId = 'walker_id';
+  static const columnDogOwnerId= 'dog_owner_id';
 
 
   // Inserts a row in the database where each key in the Map is a column name
@@ -22,6 +24,10 @@ class ReservationDatabase {
 
   Future<List<Map<String, dynamic>>> getById(int id) async {
     return await DatabaseHelper.getDb().rawQuery("SELECT * FROM $table WHERE id = '$id'");
+  }
+
+  static Future<List<Map<String, dynamic>>> getByDogOwnerId(int id) async {
+    return await DatabaseHelper.getDb().rawQuery("SELECT * FROM $table WHERE dog_owner_id = '$id'");
   }
 
   // All of the rows are returned as a list of maps, where each map is

@@ -10,6 +10,7 @@ class AddScheduleForWalkersController extends GetxController {
   TextEditingController dogIdController = TextEditingController();
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
+  TextEditingController walkerIdController = TextEditingController();
 
   var dogList = <Map<String, dynamic>>[].obs;
   // It is mandatory initialize with one value from listType
