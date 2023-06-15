@@ -10,9 +10,11 @@ import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 import 'package:walkwithme/globals.dart' as globals;
 
 class HomeScreen extends GetWidget<HomeController> {
-  Future<List<Map<String, dynamic>>> reservationList =
+  Future<List<Map<String, dynamic>>> reservationsById =
       ReservationDatabase.getByDogOwnerId(globals.user["id"]);
 
+  Future<List<Map<String, dynamic>>> allReservations =
+      ReservationDatabase.queryAllRows();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -62,7 +64,9 @@ class HomeScreen extends GetWidget<HomeController> {
                 child: Container(
                   width: MediaQuery.of(context).size.width * 9 / 10,
                   child: FutureBuilder<List<Map<String, dynamic>>>(
-                    future: reservationList,
+                    future: globals.user["role"] == "Dog Owner"
+                        ? reservationsById
+                        : allReservations,
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         print(snapshot.data);
