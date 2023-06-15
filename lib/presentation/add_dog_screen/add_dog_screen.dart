@@ -195,7 +195,7 @@ class AddDogScreen extends GetWidget<AddDogController> {
       DogDatabase.columnName: controller.dogNameController.text,
       DogDatabase.columnGender: controller.dogGenderController.text,
       DogDatabase.columnBreed: controller.dogBreedController.text,
-      DogDatabase.columnOwner: globals.user[0].values.toList()[0],
+      DogDatabase.columnOwner: globals.user["id"],
     };
     final id = await dogDatabase.insert(row);
 

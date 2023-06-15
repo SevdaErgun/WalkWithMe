@@ -73,8 +73,8 @@ class ProfileScreen extends GetWidget<ProfileController> {
                             alignment: Alignment.center,
                             child: Container(
                               child: Text(
-                                globals.user[0].values.toList()[2] +
-                                    globals.user[0].values.toList()[3],
+                                globals.user["name"] +
+                                    globals.user["surname"],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular32,
@@ -148,7 +148,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                                 right: 12,
                               ),
                               child: Text(
-                                globals.user[0].values.toList()[2],
+                                globals.user["name"],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular24,
@@ -203,7 +203,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                                 right: 12,
                               ),
                               child: Text(
-                                globals.user[0].values.toList()[3],
+                                globals.user["surname"],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular24,
@@ -258,7 +258,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                                 right: 12,
                               ),
                               child: Text(
-                                globals.user[0].values.toList()[1],
+                                globals.user["email"],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular24,
@@ -313,7 +313,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                                 right: 12,
                               ),
                               child: Text(
-                                globals.user[0].values.toList()[4],
+                                globals.user["password"],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular24,
@@ -368,7 +368,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                                 right: 12,
                               ),
                               child: Text(
-                                globals.user[0].values.toList()[5],
+                                globals.user["role"],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,
                                 style: AppStyle.txtRobotoRomanRegular24,

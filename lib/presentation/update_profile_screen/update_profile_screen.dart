@@ -1,5 +1,6 @@
 import 'package:walkwithme/presentation/home_screen/home_screen.dart';
 import 'package:walkwithme/globals.dart' as globals;
+import 'package:walkwithme/services/db/customer/customer_database.dart';
 import '../../widgets/app_bar/appbar_subtitle_1.dart';
 import '../../widgets/app_bar/appbar_subtitle_2.dart';
 import '../../widgets/app_bar/appbar_title.dart';
@@ -31,10 +32,15 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
           ),
           actions: [
             Container(
-              child: Icon(
-                Icons.verified,
-                color: Colors.green.shade400,
-                size: 32,
+              child: GestureDetector(
+                onTap: () => {
+                  updateProfile()
+                },
+                child: Icon(
+                  Icons.verified,
+                  color: Colors.green.shade400,
+                  size: 32,
+                ),
               ),
             ),
             SizedBox(
@@ -75,7 +81,7 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
                   width: MediaQuery.sizeOf(context).width * 8 / 10,
                   focusNode: FocusNode(),
                   autofocus: false,
-                  controller: controller.nameController,
+                  controller: controller.nameController = TextEditingController(text: globals.user["name"]),
                   hintText: "lbl_name".tr,
                   margin: getMargin(
                     top: 45,
@@ -91,7 +97,7 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
                   width: MediaQuery.sizeOf(context).width * 8 / 10,
                   focusNode: FocusNode(),
                   autofocus: false,
-                  controller: controller.surnameController,
+                  controller: controller.surnameController = TextEditingController(text: globals.user["surname"]),
                   hintText: "lbl_surname".tr,
                   margin: getMargin(
                     top: 33,
@@ -107,7 +113,7 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
                   width: MediaQuery.sizeOf(context).width * 8 / 10,
                   focusNode: FocusNode(),
                   autofocus: false,
-                  controller: controller.emailController,
+                  controller: controller.emailController = TextEditingController(text: globals.user["email"]),
                   hintText: "lbl_email".tr,
                   margin: getMargin(
                     top: 33,
@@ -125,7 +131,7 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
                   width: MediaQuery.sizeOf(context).width * 8 / 10,
                   focusNode: FocusNode(),
                   autofocus: false,
-                  controller: controller.passwordController,
+                  controller: controller.passwordController = TextEditingController(text: globals.user["password"]),
                   hintText: "lbl_password".tr,
                   margin: getMargin(
                     top: 33,
@@ -171,5 +177,23 @@ class UpdateProfileScreen extends GetWidget<UpdateProfileController> {
       default:
         return DefaultWidget();
     }
+  }
+
+  void updateProfile() {
+    Map<String, dynamic> row = {
+      CustomerDatabase.columnId : globals.user["id"],
+      CustomerDatabase.columnName: controller.nameController.text,
+      CustomerDatabase.columnSurname: controller.surnameController.text,
+      CustomerDatabase.columnEmail: controller.emailController.text,
+      CustomerDatabase.columnPassword: controller.passwordController.text,
+      CustomerDatabase.columnRole : globals.user["role"]
+    };
+
+  CustomerDatabase.update(row);
+
+  Get.toNamed(AppRoutes.profileScreen);
+
+  globals.user = row;
+
   }
 }

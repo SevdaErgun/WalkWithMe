@@ -157,7 +157,7 @@ class LoginScreen extends GetWidget<LoginController> {
 
   void login() async {
   var row = await customerDatabase.getById(controller.emailController.text,controller.passwordController.text);
-  globals.user = row;
+  globals.user = row[0];
   if(row.isNotEmpty ){
     Get.toNamed(AppRoutes.homeScreen);
   }

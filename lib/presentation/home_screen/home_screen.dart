@@ -24,7 +24,7 @@ class HomeScreen extends GetWidget<HomeController> {
             ),
           ),
           actions: [
-            if ( globals.user[0].values.toList()[5] == "Dog Owner")
+            if ( globals.user["role"] == "Dog Owner")
               Container(
                   child: GestureDetector(
                 onTap: () {
@@ -93,7 +93,7 @@ class HomeScreen extends GetWidget<HomeController> {
           onChanged: (BottomBarEnum type) {
             Get.toNamed(getCurrentRoute(type));
           },
-          roleStatus:  globals.user[0].values.toList()[5],
+          roleStatus:  globals.user["role"],
         ),
       ),
     );

@@ -1,3 +1,3 @@
 library walkWithMe.globals;
 
-List<Map<String, dynamic>> user = List.empty();
+Map<String, dynamic> user = Map();
