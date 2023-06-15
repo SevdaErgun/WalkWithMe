@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
 import 'package:walkwithme/widgets/app_bar/appbar_title.dart';
 import 'package:walkwithme/widgets/app_bar/custom_app_bar.dart';
+import 'package:date_time_picker/date_time_picker.dart';
 
 // ignore_for_file: must_be_immutable
-class AddScheduleForWalkersScreen extends GetWidget<AddScheduleForWalkersController> {
-
+class AddScheduleForWalkersScreen
+    extends GetWidget<AddScheduleForWalkersController> {
   ReservationDatabase reservationDatabase = ReservationDatabase();
-
+  final AddScheduleForWalkersController c =
+      Get.put(AddScheduleForWalkersController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,9 +31,7 @@ class AddScheduleForWalkersScreen extends GetWidget<AddScheduleForWalkersControl
           actions: [
             Container(
               child: GestureDetector(
-                onTap: () => {
-                  makeReservation()
-                },
+                onTap: () => {makeReservation()},
                 child: Icon(
                   Icons.verified,
                   color: Colors.green.shade400,
@@ -45,9 +45,7 @@ class AddScheduleForWalkersScreen extends GetWidget<AddScheduleForWalkersControl
             Container(
               margin: getMargin(right: 26),
               child: GestureDetector(
-                onTap: () => {
-                Get.toNamed(AppRoutes.homeScreen)
-                },
+                onTap: () => {Get.toNamed(AppRoutes.homeScreen)},
                 child: Icon(
                   Icons.cancel_outlined,
                   color: ColorConstant.blackText,
@@ -167,64 +165,111 @@ class AddScheduleForWalkersScreen extends GetWidget<AddScheduleForWalkersControl
                     margin: getMargin(left: 30, top: 60, right: 30),
                   ),
                   Container(
-                    margin: getMargin(
-                      left: 44,
-                      top: 33,
-                      right: 57,
-                    ),
-                    padding: getPadding(
-                      left: 19,
-                      top: 15,
-                      right: 19,
-                      bottom: 15,
-                    ),
-                    decoration: AppDecoration.outlineBluegray700.copyWith(
-                      borderRadius: BorderRadiusStyle.roundedBorder13,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: getPadding(
-                            top: 11,
-                            bottom: 7,
-                          ),
-                          child: Text(
-                            "lbl_select_a_dog".tr,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style: AppStyle.txtRobotoRomanRegular24,
-                          ),
-                        ),
-                        CustomImageView(
-                          imagePath: ImageConstant.imgDog1,
-                          height: getSize(
-                            46,
-                          ),
-                          width: getSize(
-                            46,
-                          ),
-                          margin: getMargin(
-                            top: 1,
-                            right: 27,
-                          ),
-                        ),
-                      ],
-                    ),
+                    alignment: Alignment.centerLeft,
+                    margin: getMargin(left: 30, right: 30, top: 30),
+                    child: Text('Select a dog'),
                   ),
-                  CustomTextFormField(
-                    focusNode: FocusNode(),
-                    autofocus: false,
-                    controller: controller.startDateController,
-                    hintText: "lbl_start_date".tr,
-                    margin: getMargin(left: 30, top: 30, right: 30),
+                  Obx(() => Container(
+                      // color: Colors.green,
+                      width: double.infinity,
+                      margin: getMargin(left: 30, right: 30),
+                      alignment: Alignment.centerLeft,
+                      child: DropdownButton<String>(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                          value: c.itemCurrent.value,
+                          items: c.items.map((String item) {
+                            return DropdownMenuItem<String>(
+                              value: item,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  CustomImageView(
+                                    imagePath: ImageConstant.imgDog1,
+                                    height: getSize(
+                                      30,
+                                    ),
+                                    width: getSize(
+                                      30,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(item),
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                          onChanged: (item) {
+                            c.itemCurrent.value = item!;
+                          }))),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: getMargin(left: 30, right: 30),
+                        child: Text('Select Start Date'),
+                      ),
+                      Container(
+                        margin: getMargin(left: 30, right: 30, bottom: 30),
+                        child: DateTimePicker(
+                          type: DateTimePickerType.dateTimeSeparate,
+                          dateMask: 'd MMM, yyyy',
+                          initialValue: DateTime.now().toString(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2100),
+                          icon: Icon(Icons.event),
+                          dateLabelText: 'Date',
+                          timeLabelText: "Hour",
+                          selectableDayPredicate: (date) {
+                            // Disable weekend days to select from the calendar
+
+                            return true;
+                          },
+                          onChanged: (val) => print(val),
+                          validator: (val) {
+                            print(val);
+                            return null;
+                          },
+                          onSaved: (val) => print(val),
+                        ),
+                      ),
+                    ],
                   ),
-                  CustomTextFormField(
-                    focusNode: FocusNode(),
-                    autofocus: false,
-                    controller: controller.endDateController,
-                    hintText: "lbl_finish_date".tr,
-                    margin: getMargin(left: 30, top: 30, right: 30, bottom: 30),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: getMargin(left: 30, right: 30),
+                        child: Text('Select Finish Date'),
+                      ),
+                      Container(
+                        margin: getMargin(left: 30, right: 30, bottom: 30),
+                        child: DateTimePicker(
+                          type: DateTimePickerType.dateTimeSeparate,
+                          dateMask: 'd MMM, yyyy',
+                          initialValue: DateTime.now().toString(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2100),
+                          icon: Icon(Icons.event),
+                          dateLabelText: 'Date',
+                          timeLabelText: "Hour",
+                          selectableDayPredicate: (date) {
+                            // Disable weekend days to select from the calendar
+
+                            return true;
+                          },
+                          onChanged: (val) => print(val),
+                          validator: (val) {
+                            print(val);
+                            return null;
+                          },
+                          onSaved: (val) => print(val),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -239,7 +284,7 @@ class AddScheduleForWalkersScreen extends GetWidget<AddScheduleForWalkersControl
     Map<String, dynamic> row = {
       ReservationDatabase.columnTitle: controller.titleController.text,
       ReservationDatabase.columnStartDate: controller.startDateController.text,
-      ReservationDatabase.columnEndDate:controller.startDateController.text,
+      ReservationDatabase.columnEndDate: controller.startDateController.text,
       ReservationDatabase.columnDogId: 1,
     };
 
