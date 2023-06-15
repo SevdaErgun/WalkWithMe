@@ -1,14 +1,16 @@
+import '../../../services/db/reservation/reservation_database.dart';
 import '../controller/home_controller.dart';
 import '../models/home_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
 import 'package:walkwithme/widgets/custom_button.dart';
+import 'package:walkwithme/globals.dart' as globals;
 
 // ignore: must_be_immutable
 class HomeItemWidget extends StatelessWidget {
-  HomeItemWidget(this.homeItemModelObj);
+  HomeItemWidget(this.reservationItem);
 
-  HomeItemModel homeItemModelObj;
+  Map<String, dynamic> reservationItem;
 
   var controller = Get.find<HomeController>();
 
@@ -119,60 +121,84 @@ class HomeItemWidget extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width * 3 / 10,
-                      child: ElevatedButton(
+                    if (globals.user["role"] == 'Dog Owner' &&
+                        reservationItem['is_reserved'] == 0)
+                      SizedBox(
+                        width: MediaQuery.sizeOf(context).width * 3 / 10,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Confirm'),
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(0),
+                                backgroundColor: MaterialStateProperty.all(
+                                    ColorConstant.blue30001),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      8.0), /*side: BorderSide(color: Colors.red)*/
+                                )))),
+                      ),
+                    if (globals.user["role"] == 'Dog Owner' &&
+                        reservationItem['is_reserved'] != 2)
+                      Padding(
+                        padding: getPadding(left: 24, right: 24),
+                        child: SizedBox(
+                          height: getVerticalSize(
+                            44,
+                          ),
+                          child: VerticalDivider(
+                            width: getHorizontalSize(
+                              1,
+                            ),
+                            thickness: getVerticalSize(
+                              1,
+                            ),
+                            color: ColorConstant.black900,
+                            indent: getHorizontalSize(
+                              1,
+                            ),
+                            endIndent: getHorizontalSize(
+                              4,
+                            ),
+                          ),
+                        ),
+                      ),
+                    if (globals.user["role"] == 'Dog Owner' &&
+                        reservationItem['is_reserved'] == 2)
+                      SizedBox(
+                        width: MediaQuery.sizeOf(context).width * 5 / 10,
+                        child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Matched'),
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(0),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.green.shade400),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      8.0), /*side: BorderSide(color: Colors.red)*/
+                                )))),
+                      ),
+                    if (globals.user["role"] == 'Dog Owner' &&
+                        reservationItem['is_reserved'] == 0)
+                      SizedBox(
+                        width: MediaQuery.sizeOf(context).width * 3 / 10,
+                        child: OutlinedButton(
                           onPressed: () {},
-                          child: const Text('Confirm'),
-                          style: ButtonStyle(
-                              elevation: MaterialStateProperty.all(0),
-                              backgroundColor: MaterialStateProperty.all(
-                                  ColorConstant.blue30001),
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    8.0), /*side: BorderSide(color: Colors.red)*/
-                              )))),
-                    ),
-                    Padding(
-                      padding: getPadding(left: 24, right: 24),
-                      child: SizedBox(
-                        height: getVerticalSize(
-                          44,
-                        ),
-                        child: VerticalDivider(
-                          width: getHorizontalSize(
-                            1,
-                          ),
-                          thickness: getVerticalSize(
-                            1,
-                          ),
-                          color: ColorConstant.black900,
-                          indent: getHorizontalSize(
-                            1,
-                          ),
-                          endIndent: getHorizontalSize(
-                            4,
+                          child: const Text('Deny',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(235, 88, 78, 1))),
+                          style: OutlinedButton.styleFrom(
+                            shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(8.0)),
+                            side: BorderSide(
+                                width: 1.0, color: ColorConstant.red400),
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.sizeOf(context).width * 3 / 10,
-                      child: OutlinedButton(
-                        onPressed: () {},
-                        child: const Text('Deny',
-                            style: TextStyle(
-                                color: Color.fromRGBO(235, 88, 78, 1))),
-                        style: OutlinedButton.styleFrom(
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(8.0)),
-                          side: BorderSide(
-                              width: 1.0, color: ColorConstant.red400),
-                        ),
-                      ),
-                    )
+                      )
                   ],
                 ),
               ),

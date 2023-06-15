@@ -1,3 +1,4 @@
+import '../../services/db/reservation/reservation_database.dart';
 import '../../widgets/app_bar/appbar_title.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
 import '../home_screen/widgets/home_item_widget.dart';
@@ -9,6 +10,8 @@ import 'package:walkwithme/widgets/custom_bottom_bar.dart';
 import 'package:walkwithme/globals.dart' as globals;
 
 class HomeScreen extends GetWidget<HomeController> {
+  Future<List<Map<String, dynamic>>> reservationList =
+      ReservationDatabase.getByDogOwnerId(globals.user["id"]);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class HomeScreen extends GetWidget<HomeController> {
             ),
           ),
           actions: [
-            if ( globals.user["role"] == "Dog Owner")
+            if (globals.user["role"] == "Dog Owner")
               Container(
                   child: GestureDetector(
                 onTap: () {
@@ -57,6 +60,35 @@ class HomeScreen extends GetWidget<HomeController> {
             children: [
               Expanded(
                 child: Container(
+                  width: MediaQuery.of(context).size.width * 9 / 10,
+                  child: FutureBuilder<List<Map<String, dynamic>>>(
+                    future: reservationList,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        print(snapshot.data);
+                        List<Map<String, dynamic>> reservationListData =
+                            snapshot.data!;
+                        return ListView.separated(
+                          physics: BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          separatorBuilder: (context, index) {
+                            return SizedBox(
+                              height: getVerticalSize(35),
+                            );
+                          },
+                          itemCount: reservationListData.length,
+                          itemBuilder: (context, index) {
+                            return HomeItemWidget(reservationListData[index]);
+                          },
+                        );
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      }
+                      // You can return a placeholder widget or null while data is loading
+                      return CircularProgressIndicator();
+                    },
+                  ),
+                ), /*Container(
                   width: MediaQuery.sizeOf(context).width * 9 / 10,
                   child: Obx(
                     () => ListView.separated(
@@ -84,7 +116,7 @@ class HomeScreen extends GetWidget<HomeController> {
                       },
                     ),
                   ),
-                ),
+                ),*/
               ),
             ],
           ),
@@ -93,7 +125,7 @@ class HomeScreen extends GetWidget<HomeController> {
           onChanged: (BottomBarEnum type) {
             Get.toNamed(getCurrentRoute(type));
           },
-          roleStatus:  globals.user["role"],
+          roleStatus: globals.user["role"],
         ),
       ),
     );
