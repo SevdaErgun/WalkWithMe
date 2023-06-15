@@ -45,7 +45,7 @@ class ReservationDatabase {
 
   // We are assuming here that the id column in the map is set. The other
   // column values will be used to update the row.
-  Future<int> update(Map<String, dynamic> row) async {
+  static Future<int> update(Map<String, dynamic> row) async {
     int id = row[columnId];
     return await  DatabaseHelper.getDb().update(
       table,
