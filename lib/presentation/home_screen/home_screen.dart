@@ -56,7 +56,6 @@ class HomeScreen extends GetWidget<HomeController> {
         ),
         body: Container(
           width: double.infinity,
-          padding: EdgeInsets.only(top: 45),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [

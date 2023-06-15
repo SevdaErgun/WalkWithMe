@@ -6,7 +6,7 @@ import 'package:walkwithme/services/db/database_helper.dart';
 class DatabaseHelper{
   var _databaseVersion = 1;
   static late Database _db;
-  String _databaseName = "localDB2.db";
+  String _databaseName = "walkWithMeDB.db";
 
   String? get getDatabaseName {
     return _databaseName;
@@ -31,25 +31,28 @@ class DatabaseHelper{
   // SQL code to create the database table
   Future _onCreate(Database db, int version) async {
     await db.execute('''
-        CREATE TABLE Customer(
-         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-         email TEXT,
-         name TEXT,
-         surname TEXT,
-         password TEXT,
-         role TEXT,
-         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-          )
+        CREATE TABLE "Customer" (
+          "id"	INTEGER NOT NULL,
+          "email"	TEXT,
+          "name"	TEXT,
+          "surname"	TEXT,
+          "password"	TEXT,
+          "role"	TEXT,
+          "createdAt"	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          PRIMARY KEY("id" AUTOINCREMENT)
+        )
           ''');
 
     await db.execute('''
-        CREATE TABLE Dog(
-         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-         name TEXT,
-         gender TEXT,
-         breed TEXT,
-         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-          )
+        CREATE TABLE "Dog" (
+          "id"	INTEGER NOT NULL,
+          "name"	TEXT,
+          "gender"	TEXT,
+          "breed"	TEXT,
+          "createdAt"	TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          "owner"	INTEGER,
+          PRIMARY KEY("id" AUTOINCREMENT)
+        )
           ''');
 
     await db.execute('''

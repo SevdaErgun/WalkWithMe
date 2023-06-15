@@ -73,7 +73,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                             alignment: Alignment.center,
                             child: Container(
                               child: Text(
-                                globals.user["name"] +
+                                globals.user["name"] + " "+
                                     globals.user["surname"],
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.left,

@@ -22,8 +22,8 @@ class CustomerDatabase {
 
 
   static Future<Map<String, dynamic>> getById(int id) async {
-    return await DatabaseHelper.getDb()
-        .rawQuery("SELECT * FROM $table WHERE id = $id");
+    return await DatabaseHelper.getDb().getById(id);
+  }
 
   Future<List<Map<String, dynamic>>> getByEmailAndPassword(String email, String password) async {
     return await DatabaseHelper.getDb().rawQuery("SELECT * FROM $table WHERE email = '$email' AND password = '$password'");
