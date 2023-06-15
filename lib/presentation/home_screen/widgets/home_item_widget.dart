@@ -1,14 +1,10 @@
 import 'package:walkwithme/services/db/customer/customer_database.dart';
-
 import '../../../services/db/reservation/reservation_database.dart';
 import '../controller/home_controller.dart';
-import '../models/home_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:walkwithme/core/app_export.dart';
-import 'package:walkwithme/widgets/custom_button.dart';
 import 'package:walkwithme/globals.dart' as globals;
 
-// ignore: must_be_immutable
 class HomeItemWidget extends StatelessWidget {
   HomeItemWidget(this.reservationItem);
 
@@ -18,7 +14,7 @@ class HomeItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Container(
+    return Container(
           decoration: BoxDecoration(
             color: ColorConstant.cardBackground,
             borderRadius: BorderRadius.all(Radius.circular(13)),
@@ -73,7 +69,7 @@ class HomeItemWidget extends StatelessWidget {
                           ),
                           child: FutureBuilder<Map<String, dynamic>>(
                             future: CustomerDatabase.getById(
-                                reservationItem['dogOwnerId']),
+                                reservationItem['dog_owner_id']),
                             builder: (context, snapshot) {
                               if (snapshot.hasData) {
                                 print(snapshot.data);
@@ -121,7 +117,7 @@ class HomeItemWidget extends StatelessWidget {
                           alignment: Alignment.topCenter,
                           child: Container(
                             child: Text(
-                              reservationItem['createdDate'].toString(),
+                              reservationItem['createdAt'].toString(),
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
                               style: AppStyle.txtRobotoRomanRegular18Red400,
@@ -146,8 +142,8 @@ class HomeItemWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         if (globals.user["role"] == 'Dog Owner' &&
-                            reservationItem['is_reserved'] == 1 &&
-                            reservationItem['is_canceled'] != 2)
+                            reservationItem['is_reserved'] == 0 &&
+                            reservationItem['is_canceled'] == 0)
                           SizedBox(
                             width: MediaQuery.sizeOf(context).width * 3 / 10,
                             child: ElevatedButton(
@@ -167,8 +163,8 @@ class HomeItemWidget extends StatelessWidget {
                                     )))),
                           ),
                         if (globals.user["role"] == 'Dog Owner' &&
-                            reservationItem['is_reserved'] == 1 &&
-                            reservationItem['is_canceled'] != 2)
+                            reservationItem['is_reserved'] == 0 &&
+                            reservationItem['is_canceled'] == 0)
                           Padding(
                             padding: getPadding(left: 24, right: 24),
                             child: SizedBox(
@@ -193,11 +189,13 @@ class HomeItemWidget extends StatelessWidget {
                             ),
                           ),
                         if (globals.user["role"] == 'Walker' &&
-                            reservationItem['is_canceled'] == 1)
+                            reservationItem['is_reserved'] == 0 && reservationItem['is_canceled'] != 0)
                           SizedBox(
                             width: MediaQuery.sizeOf(context).width * 5 / 10,
                             child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  apply();
+                                },
                                 child: const Text('Apply'),
                                 style: ButtonStyle(
                                     elevation: MaterialStateProperty.all(0),
@@ -229,7 +227,7 @@ class HomeItemWidget extends StatelessWidget {
                                     )))),
                           ),
                         if (globals.user["role"] == 'Walker' &&
-                            reservationItem['is_canceled'] == 0)
+                            reservationItem['is_canceled'] == 2 && reservationItem['is_reserved'] == 1)
                           SizedBox(
                             width: MediaQuery.sizeOf(context).width * 5 / 10,
                             child: ElevatedButton(
@@ -265,8 +263,8 @@ class HomeItemWidget extends StatelessWidget {
                                     )))),
                           ),
                         if (globals.user["role"] == 'Dog Owner' &&
-                            reservationItem['is_reserved'] == 1 &&
-                            reservationItem['is_canceled'] != 2)
+                            reservationItem['is_reserved'] == 0 &&
+                            reservationItem['is_canceled'] == 0)
                           SizedBox(
                             width: MediaQuery.sizeOf(context).width * 3 / 10,
                             child: OutlinedButton(
@@ -292,7 +290,7 @@ class HomeItemWidget extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        );
   }
 
   void _confirmReservation() {
@@ -315,5 +313,16 @@ class HomeItemWidget extends StatelessWidget {
 
     ReservationDatabase.update(row);
     Get.offNamed(Get.currentRoute);
+  }
+
+  void apply() {
+    Map<String, dynamic> row = {
+      ReservationDatabase.columnIsCanceled: 0,
+      ReservationDatabase.columnId: reservationItem["id"]
+    };
+
+    ReservationDatabase.update(row);
+    Get.offNamed(Get.currentRoute);
+
   }
 }

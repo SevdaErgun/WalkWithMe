@@ -199,6 +199,10 @@ class AddDogScreen extends GetWidget<AddDogController> {
     };
     final id = await dogDatabase.insert(row);
 
+    controller.dogNameController.text = "";
+    controller.dogGenderController.text = "";
+    controller.dogBreedController.text = "";
+
     Get.toNamed(AppRoutes.dogsScreen);
   }
 }

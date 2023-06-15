@@ -288,7 +288,7 @@ class AddScheduleForWalkersScreen
       ReservationDatabase.columnEndDate: controller.startDateController.text,
       ReservationDatabase.columnDogId: c.itemCurrent.value,
       ReservationDatabase.columnWalkerId: 1,
-      ReservationDatabase.columnDogOwnerId: globals.user["role"]
+      ReservationDatabase.columnDogOwnerId: globals.user["id"]
     };
 
     reservationDatabase.insert(row);
