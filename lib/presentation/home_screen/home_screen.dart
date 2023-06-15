@@ -88,35 +88,7 @@ class HomeScreen extends GetWidget<HomeController> {
                       return CircularProgressIndicator();
                     },
                   ),
-                ), /*Container(
-                  width: MediaQuery.sizeOf(context).width * 9 / 10,
-                  child: Obx(
-                    () => ListView.separated(
-                      physics: BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      separatorBuilder: (
-                        context,
-                        index,
-                      ) {
-                        return SizedBox(
-                          height: getVerticalSize(
-                            50,
-                          ),
-                        );
-                      },
-                      itemCount: controller
-                          .homeModelObj.value.homeItemList.value.length,
-                      itemBuilder: (context, index) {
-                        HomeItemModel model = controller
-                            .homeModelObj.value.homeItemList.value[index];
-
-                        return HomeItemWidget(
-                          model,
-                        );
-                      },
-                    ),
-                  ),
-                ),*/
+                ),
               ),
             ],
           ),

@@ -122,11 +122,13 @@ class HomeItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     if (globals.user["role"] == 'Dog Owner' &&
-                        reservationItem['is_reserved'] == 0)
+                        reservationItem['is_reserved'] == 1 && reservationItem['is_canceled'] != 2)
                       SizedBox(
                         width: MediaQuery.sizeOf(context).width * 3 / 10,
                         child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              _confirmReservation();
+                            },
                             child: const Text('Confirm'),
                             style: ButtonStyle(
                                 elevation: MaterialStateProperty.all(0),
@@ -140,7 +142,7 @@ class HomeItemWidget extends StatelessWidget {
                                 )))),
                       ),
                     if (globals.user["role"] == 'Dog Owner' &&
-                        reservationItem['is_reserved'] != 2)
+                        reservationItem['is_reserved'] == 1 && reservationItem['is_canceled'] != 2)
                       Padding(
                         padding: getPadding(left: 24, right: 24),
                         child: SizedBox(
@@ -165,7 +167,7 @@ class HomeItemWidget extends StatelessWidget {
                         ),
                       ),
                     if (globals.user["role"] == 'Dog Owner' &&
-                        reservationItem['is_reserved'] == 2)
+                        reservationItem['is_canceled'] == 2)
                       SizedBox(
                         width: MediaQuery.sizeOf(context).width * 5 / 10,
                         child: ElevatedButton(
@@ -183,11 +185,13 @@ class HomeItemWidget extends StatelessWidget {
                                 )))),
                       ),
                     if (globals.user["role"] == 'Dog Owner' &&
-                        reservationItem['is_reserved'] == 0)
+                        reservationItem['is_reserved'] == 1 && reservationItem['is_canceled'] != 2)
                       SizedBox(
                         width: MediaQuery.sizeOf(context).width * 3 / 10,
                         child: OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            _denyReservation();
+                          },
                           child: const Text('Deny',
                               style: TextStyle(
                                   color: Color.fromRGBO(235, 88, 78, 1))),
@@ -207,5 +211,27 @@ class HomeItemWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _confirmReservation() {
+    Map<String, dynamic> row = {
+      ReservationDatabase.columnIsReserved: 1,
+      ReservationDatabase.columnIsCanceled: 2,
+      ReservationDatabase.columnId : reservationItem["id"]
+    };
+
+    ReservationDatabase.update(row);
+    Get.offNamed(Get.currentRoute);
+  }
+
+  void _denyReservation() {
+    Map<String, dynamic> row = {
+      ReservationDatabase.columnIsReserved: 0,
+      ReservationDatabase.columnIsCanceled: -1,
+      ReservationDatabase.columnId : reservationItem["id"]
+    };
+
+    ReservationDatabase.update(row);
+    Get.offNamed(Get.currentRoute);
   }
 }
